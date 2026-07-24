@@ -1,4 +1,6 @@
 import './style.css'
+import { PortfolioData } from './utils/PortfolioData'
+import { Portfolio } from './components/SecWork'
 import equalisign from './assets/IMG_0492.jpg'
 
 function Index() {
@@ -16,7 +18,7 @@ function Index() {
 							<span className='block font-bodoni italic my-2.5'>crafting <span className='text-primary'>interfaces</span></span>
 							<span className='font-hanken uppercase block mt-6'>people love.</span>
 						</h1>
-						<p className='font-hanken w-[546px] font-normal mx-auto mt-8 text-xl leading-[1.8]'>I design and build fast, accessible, and pixel-perfect web experiences using React and TypeScript</p>
+						<p className='font-hanken max-w-[546px] font-normal mx-auto mt-8 text-xl leading-[1.8]'>I design and build fast, accessible, and pixel-perfect web experiences using React and TypeScript</p>
 					</div>
 					<div className='scorll-to-explore font-hanken mt-8'>
 						<span className='bg-secondary-foreground w-0.5 h-16 block mx-auto'></span>
@@ -25,6 +27,9 @@ function Index() {
 					</div>
 				</div>
 			</div>
+			{PortfolioData.map((item, index) => (
+				<Portfolio key={index} {...item} />
+			))}
 		</>
 	)
 }
