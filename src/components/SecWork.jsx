@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger)
 function Portfolio({ title, subtitle, description, image, linkWork, imageOrder = 2, textOrder = 1 }) {
 
 	return (
-		<div className='portfolio-card h-svh w-full bg-white'>
-			<div className='grid grid-cols-1 md:grid-cols-2 h-svh'>
+		<div className='portfolio-card lg:h-[45vh] 2xl:h-[50vh] w-full bg-white'>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:h-[45vh] 2xl:h-[50vh]'>
 				<div style={{ order: textOrder }} className='bg-white flex flex-col justify-center h-full font-hanken text-center p-8 lg:p-16'>
 					<div className='self-center'>
 						<h3 className='text-[#665B53] text-center uppercase text-sm mb-3'>{subtitle}</h3>
@@ -47,7 +47,6 @@ function StackedPortfolio({ items }) {
 
 			gsap.to(card, {
 				scale: scaleEnd,
-				borderRadius: '20px',
 				ease: 'none',
 				scrollTrigger: {
 					trigger: card,

@@ -28,10 +28,54 @@ function Index() {
 				</div>
 			</div>
 			<section className='portfolio-card-wrapper relative'>
-				<StackedPortfolio items={PortfolioData} />
+				<div className='container mx-auto'>
+					<StackedPortfolio items={PortfolioData} />
+				</div>
 			</section>
 			<section>
 				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+				<h2>About</h2>
+
 			</section>
 		</>
 	)
