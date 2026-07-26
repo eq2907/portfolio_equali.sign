@@ -1,9 +1,16 @@
-function Portfolio({ title, subtitle, description, image, linkWork }) {
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(ScrollTrigger)
+
+function Portfolio({ title, subtitle, description, image, linkWork, imageOrder = 2, textOrder = 1 }) {
 
 	return (
-		<section className='portfolio-card min-h-screen w-full bg-white relative border-t border-t-[#DDD7CD]'>
-			<div className='grid grid-cols-1 md:grid-cols-2 border-b border-b-[#DDD7CD] min-h-screen'>
-				<div className='bg-white flex flex-col justify-center h-full font-hanken text-center p-8 lg:p-16'>
+		<div className='portfolio-card h-svh w-full bg-white'>
+			<div className='grid grid-cols-1 md:grid-cols-2 h-svh'>
+				<div style={{ order: textOrder }} className='bg-white flex flex-col justify-center h-full font-hanken text-center p-8 lg:p-16'>
 					<div className='self-center'>
 						<h3 className='text-[#665B53] text-center uppercase text-sm mb-3'>{subtitle}</h3>
 						<h2 className='text-center uppercase font-semibold text-4xl lg:text-5xl mb-4'>{title}</h2>
@@ -16,12 +23,63 @@ function Portfolio({ title, subtitle, description, image, linkWork }) {
 						</a>
 					</div>
 				</div>
-				<div className='w-full h-full min-h-[350px] md:min-h-full'>
+				<div style={{ order: imageOrder }} className='w-full h-full min-h-[350px] md:min-h-full'>
 					<img className='w-full h-full object-cover' src={image} alt={title} />
 				</div>
 			</div>
-		</section>
+		</div>
 	)
 }
 
-export { Portfolio }
+function StackedPortfolio({ items }) {
+	const wrapperRef = useRef(null)
+
+	useGSAP(() => {
+		const cards = gsap.utils.toArray('.stack-card', wrapperRef.current)
+		const totalCards = cards.length
+
+		cards.forEach((card, i) => {
+			// All cards except the last one scale down as the next card scrolls over
+			if (i === totalCards - 1) return
+
+			// Each buried card shrinks a little more — creates the depth stack feel
+			const scaleEnd = 1 - (totalCards - 1 - i) * 0.045
+
+			gsap.to(card, {
+				scale: scaleEnd,
+				borderRadius: '20px',
+				ease: 'none',
+				scrollTrigger: {
+					trigger: card,
+					start: 'top top',
+					// Each card's scroll distance equals one card-height worth of scrolling
+					end: () => `+=${card.offsetHeight}`,
+					scrub: 0.5,
+				},
+			})
+		})
+	}, { scope: wrapperRef })
+
+	return (
+		<div ref={wrapperRef} className='stacked-cards-wrapper'>
+			{items.map((item, index) => (
+				<div
+					key={index}
+					className='stack-card'
+					style={{
+						position: 'sticky',
+						top: 0,
+						transformOrigin: 'top center',
+						zIndex: index + 1,
+						overflow: 'hidden',
+						willChange: 'transform',
+					}}
+				>
+					<Portfolio {...item} />
+				</div>
+			))}
+		</div>
+	)
+}
+
+export { Portfolio, StackedPortfolio }

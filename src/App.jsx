@@ -1,64 +1,11 @@
-import { useRef } from 'react';
 import './style.css'
 import { PortfolioData } from './utils/PortfolioData'
-import { Portfolio } from './components/SecWork'
+import { StackedPortfolio } from './components/SecWork'
 import equalisign from './assets/IMG_0492.jpg'
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 function Index() {
-	const containerRef = useRef(null);
-	const smootherRef = useRef(null);
-
-	useGSAP(
-		() => {
-			const smoother = ScrollSmoother.create({
-				smooth: true,
-				target: document.body,
-				effects: true,
-				smoothTouch: 0.04,
-				wrapTouch: false
-			});
-			smootherRef.current = smoother;
-
-			const cards = gsap.utils.toArray('.portfolio-card');
-			if (!cards.length) return;
-
-			cards.forEach((card, index) => {
-				const isLast = index === cards.length - 1;
-
-				ScrollTrigger.create({
-					trigger: card,
-					start: 'top top',
-					pin: true,
-					pinSpacing: false,
-					end: isLast ? '+=100%' : 'bottom top',
-				});
-
-				if (!isLast) {
-					const nextCard = cards[index + 1];
-					gsap.to(card, {
-						scale: 0.92,
-						opacity: 0.6,
-						transformOrigin: 'top center',
-						ease: 'none',
-						scrollTrigger: {
-							trigger: nextCard,
-							start: 'top bottom',
-							end: 'top top',
-							scrub: true,
-						},
-					});
-				}
-			});
-		},
-		{ scope: containerRef }
-	);
-
 	return (
-		<div ref={containerRef}>
+		<>
 			<Nav />
 			<div className='hero mt-20 mb-20'>
 				<div className="container mx-auto">
@@ -80,12 +27,13 @@ function Index() {
 					</div>
 				</div>
 			</div>
-			<div className='portfolio-cards-wrapper relative'>
-				{PortfolioData.map((item, index) => (
-					<Portfolio key={index} {...item} />
-				))}
-			</div>
-		</div>
+			<section className='portfolio-card-wrapper relative'>
+				<StackedPortfolio items={PortfolioData} />
+			</section>
+			<section>
+				<h2>About</h2>
+			</section>
+		</>
 	)
 }
 
@@ -111,5 +59,4 @@ function Nav() {
 	)
 }
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 export default Index;
