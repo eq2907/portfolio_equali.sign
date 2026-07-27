@@ -21,14 +21,19 @@
 	.btn-outline {
 		@apply border border-secondary-foreground rounded-full hover:bg-white transition-colors duration-300;
 	}
+
+	.btn-white-solid {
+		@apply bg-white text-secondary-foreground rounded-full transition-colors duration-300;
+	}
+
+	input,
+	textarea {
+		@apply bg-white w-full px-6 py-3;
+	}
 }
 
 @layer base {
 	body {
 		@apply bg-background text-secondary-foreground;
 	}
-}
-
-.stack-card {
-	@apply rounded-4xl shadow-[0px_4px_0px_0px_rgba(0,_0,_0,_0.02)];
 }
