@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function Portfolio({ title, subtitle, description, image, linkWork, imageOrder = 2, textOrder = 1 }) {
+function Portfolio({ title, subtitle, description, image, linkWork, label, imageOrder = 2, textOrder = 1 }) {
 
 	return (
 		<div className='portfolio-card lg:h-[45vh] 2xl:h-[50vh] w-full bg-white'>
@@ -23,8 +23,15 @@ function Portfolio({ title, subtitle, description, image, linkWork, imageOrder =
 						</a>
 					</div>
 				</div>
-				<div style={{ order: imageOrder }} className='w-full h-full min-h-[350px] md:min-h-full'>
+				<div style={{ order: imageOrder }} className='w-full h-full min-h-[350px] md:min-h-full relative'>
 					<img className='w-full h-full object-cover' src={image} alt={title} />
+					<div className='absolute bottom-8 right-8'>
+						<ul className='flex gap-3'>
+							{(Array.isArray(label) ? label : []).map((item, index) => (
+								<li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-4 py-1 text-sm' key={index}>{item}</li>
+							))}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

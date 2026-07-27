@@ -32,50 +32,24 @@ function Index() {
 					<StackedPortfolio items={PortfolioData} />
 				</div>
 			</section>
-			<section>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-				<h2>About</h2>
-
+			<section className='short-intro mt-14'>
+				<div className='container mx-auto'>
+					<div className='grid grid-cols-12 gap-6'>
+						<div className='col-span-8'>
+							<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>short intro</h3>
+							<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.4] mb-3.5'>Clean code, <span className='font-bodoni italic text-[#CC2B0E] normal-case'>thoughtful UX, and interfaces</span> built to last.</h2>
+							<p className='font-hanken font-normal text-xl leading-[1.8] mb-6'>
+								I started my career in design back in 2020. As time passed, I wanted to provide my clients with more than just design. This led me to explore web development using powerful low-code platforms such as Webflow, Tilda, Weblium and others. With my dual expertise in both web design and development, I bridge the gap between concept and reality to ensure a seamless user experience. My focus is on delivering exceptional work that meets the needs of my clients and their customers.
+							</p>
+							<a className="btn-outline inline-flex text-xs items-center gap-x-3 mt-2 font-semibold uppercase px-4 pt-[10px] pb-2" href="#" target="_blank" rel="noopener noreferrer"><span className="self-center">Download Resume</span><svg className="self-center" width="9" height="9" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+						</div>
+						<div className='col-span-4 self-center'>
+							<figure className='w-[300px] mx-auto'>
+								<img className='rounded-full' src={equalisign} alt="equali.sign" />
+							</figure>
+						</div>
+					</div>
+				</div>
 			</section>
 		</>
 	)

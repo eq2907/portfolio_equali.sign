@@ -15,7 +15,7 @@
 
 @layer components {
 	.glass {
-		@apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0px_4px_0px_0px_rgba(0,_0,_0,_0.01)];
+		@apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0px_4px_0px_0px_rgba(0,_0,_0,_0.02)];
 	}
 
 	.btn-outline {
@@ -27,4 +27,8 @@
 	body {
 		@apply bg-background text-secondary-foreground;
 	}
+}
+
+.stack-card {
+	@apply rounded-4xl shadow-[0px_4px_0px_0px_rgba(0,_0,_0,_0.02)];
 }

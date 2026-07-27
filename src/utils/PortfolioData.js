@@ -1,4 +1,4 @@
-export function createPortfolioData(title, subtitle, description, image, linkWork, imageOrder = 2, textOrder = 1) {
+export function createPortfolioData(title, subtitle, description, image, linkWork, label, imageOrder = 2, textOrder = 1) {
     return {
         title,
         subtitle,
@@ -6,7 +6,8 @@ export function createPortfolioData(title, subtitle, description, image, linkWor
         image,
         linkWork,
         imageOrder,
-        textOrder
+        textOrder,
+        label
     }
 }
 
@@ -17,6 +18,7 @@ const PortfolioData = [
         "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
         "https://placehold.co/600x400.png",
         "#",
+        ["PHP", "Laravel", "Tailwind CSS", "Design"],
         2, 1
     ),
     createPortfolioData(
@@ -25,6 +27,7 @@ const PortfolioData = [
         "Real-time analytics dashboard for a SaaS team. Complex charting, virtualized tables, and a design system that scales across dozens of screens.",
         "https://placehold.co/600x400.png",
         "#",
+        ["Tailwind CSS", "Design"],
         1, 2
     ),
     createPortfolioData(
@@ -33,6 +36,7 @@ const PortfolioData = [
         "Progressive web app for a neobank. Motion-first interactions, tactile card animations, and rock-solid accessibility across every flow.",
         "https://placehold.co/600x400.png",
         "#",
+        ["Design"],
         2, 1
     ),
 
