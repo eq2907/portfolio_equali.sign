@@ -69,7 +69,6 @@ function Home() {
 			<section className='get-in-touch-wrapper'>
 				<div className='grid grid-cols-2 gap-6'>
 					<div className='text-center self-center'>
-						<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Get in touch</h3>
 						<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.4] mb-3.5'><span className='font-bodoni italic text-[#CC2B0E] normal-case'>Let's start A</span> <br />conversation</h2>
 						<p className='font-hanken font-normal text-xl leading-[1.8] mb-6 max-w-127.5 mx-auto'>
 							Have a project, a question, or just want to say hello? Fill out the form and I'll get back to you as soon as possible.

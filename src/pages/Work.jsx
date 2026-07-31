@@ -1,4 +1,15 @@
-const Work = () => {
+import { useState } from 'react';
+import { PortfolioData } from '../utils/PortfolioData';
+
+function Work() {
+    const [activeCategory, setActiveCategory] = useState('All');
+
+    const categories = ['All', ...new Set(PortfolioData.map((item) => item.subtitle))];
+
+    const filteredData = activeCategory === 'All'
+        ? PortfolioData
+        : PortfolioData.filter((item) => item.subtitle === activeCategory);
+
     return (
         <div className='container mx-auto'>
             <div className='mt-20 mb-14'>
@@ -10,63 +21,43 @@ const Work = () => {
                 <p className='font-hanken max-w-2xl font-normal mt-8 text-xl leading-[1.8]'>Browse the full catalog of front-end work — filter by category or search by tech to find something that matches what you're building.</p>
                 <div className='filter-work mt-8'>
                     <ul className='flex gap-4 [&_li]:font-hanken [&_li]:text-lg [&_li]:cursor-pointer'>
-                        <li className='active'>All</li>
-                        <li>Web Design</li>
-                        <li>UI/UX Design</li>
-                        <li>Frontend Development</li>
-                        <li>Backend Development</li>
-                        <li>Fullstack Development</li>
+                        {categories.map((category, index) => (
+                            <li
+                                key={index}
+                                className={activeCategory === category ? 'active' : ''}
+                                onClick={() => setActiveCategory(category)}
+                            >
+                                {category}
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
 
-
-
-            <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mb-28'>
-                <div className='grid gap-4'>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg' alt='' />
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-28'>
+                {filteredData.map((item, index) => (
+                    <div key={index}>
+                        <figure className='mb-4'>
+                            <img className='w-full' src={item.image} alt={item.title} />
+                            <figcaption className='mt-6'>
+                                <h3 className='text-[#665B53] uppercase text-xs mb-3'>{item.subtitle}</h3>
+                                <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
+                                <p className='font-hanken font-normal my-2 text-sm leading-[1.8]'>{item.description}</p>
+                                <ul className='flex flex-wrap gap-2 mt-4 mb-4'>
+                                    {(Array.isArray(item.label) ? item.label : []).map((label, index) => (
+                                        <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={index}>{label}</li>
+                                    ))}
+                                </ul>
+                                <a className="btn-outline inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5" href={item.linkWork} target="_blank" rel="noopener noreferrer">
+                                    <span className="self-center">View project</span>
+                                    <svg className="self-center" width="9" height="9" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"></path>
+                                    </svg>
+                                </a>
+                            </figcaption>
+                        </figure>
                     </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg' alt='' />
-                    </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg' alt='' />
-                    </div>
-                </div>
-                <div className='grid gap-4'>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg' alt='' />
-                    </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg' alt='' />
-                    </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg' alt='' />
-                    </div>
-                </div>
-                <div className='grid gap-4'>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg' alt='' />
-                    </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg' alt='' />
-                    </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg' alt='' />
-                    </div>
-                </div>
-                <div className='grid gap-4'>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg' alt='' />
-                    </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg' alt='' />
-                    </div>
-                    <div>
-                        <img className='h-auto max-w-full rounded-base' src='https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg' alt='' />
-                    </div>
-                </div>
+                ))}
             </div>
 
         </div>
