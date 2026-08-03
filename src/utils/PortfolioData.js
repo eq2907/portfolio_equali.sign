@@ -1,45 +1,94 @@
-export function createPortfolioData(title, subtitle, description, image, linkWork, label, imageOrder = 2, textOrder = 1) {
-    return {
-        title,
-        subtitle,
-        description,
-        image,
-        linkWork,
-        imageOrder,
-        textOrder,
-        label
-    }
-}
+import Img_Porto_1 from '../assets/Img_Porto_1.jpg';
+import Img_Porto_2 from '../assets/corporate_accountability.png';
+import Img_Porto_banner_1 from '../assets/daniel-james-0tTYVEMR9rM-unsplash.jpg';
+import Img_Porto_3 from '../assets/Img_Porto_3.jpg';
 
 const PortfolioData = [
-    createPortfolioData(
-        "Northwind Commerce",
-        "E-commerce Platform",
-        "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
-        "https://placehold.co/600x400.png",
-        "#",
-        ["PHP", "Laravel", "Tailwind CSS", "Design"],
-        2, 1
-    ),
-    createPortfolioData(
-        "Pulse Analytics",
-        "Data Dashboard",
-        "Real-time analytics dashboard for a SaaS team. Complex charting, virtualized tables, and a design system that scales across dozens of screens.",
-        "https://placehold.co/600x400.png",
-        "#",
-        ["Tailwind CSS", "Design"],
-        1, 2
-    ),
-    createPortfolioData(
-        "Halo Banking",
-        "Mobile Web App",
-        "Progressive web app for a neobank. Motion-first interactions, tactile card animations, and rock-solid accessibility across every flow.",
-        "https://placehold.co/600x400.png",
-        "#",
-        ["Design"],
-        2, 1
-    ),
+    {
+        slug: "northwind-commerce",
+        title: "Northwind Commerce",
+        subtitle: "E-commerce Platform",
+        description: "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
+        shortDescription: "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
+        image: Img_Porto_1,
+        bannerImg: Img_Porto_1,
+        heroBgColor: '#C4FFDA',
+        linkWork: "#",
+        label: ["PHP", "Laravel", "Tailwind CSS", "Design"],
+        imageOrder: 2,
+        textOrder: 1,
+        year: "2024",
+        role: "Frontend Developer & UI Designer",
+        duration: "4 months",
+        liveUrl: "#",
+        tools: ["React", "TypeScript", "Laravel", "PHP", "Tailwind CSS", "Figma", "GSAP"],
+        challenge: "The client had an outdated monolithic e-commerce setup with a poor mobile experience and conversion rates below 1.2%. The existing codebase made it nearly impossible to ship new features without breaking existing ones. They needed a modern, scalable frontend that could handle flash sales with thousands of concurrent users.",
+        solution: "I architected a headless storefront decoupled from the Laravel backend via a REST API. Built a fully custom design system in Figma, then implemented it with React and TypeScript. Introduced GSAP-powered micro-interactions for product hover states and cart animations. The checkout flow was redesigned from 6 steps down to 2, dramatically reducing drop-off.",
+        results: [
+            { metric: "3.8%", label: "Conversion Rate" },
+            { metric: "+217%", label: "Increase vs. Previous" },
+            { metric: "1.2s", label: "First Contentful Paint" },
+            { metric: "98", label: "Lighthouse Score" },
+        ],
+        gallery: [Img_Porto_1, Img_Porto_2],
+    },
+    {
+        slug: "corporate-accountability",
+        title: "Corporate Accountability",
+        subtitle: "Company Profile",
+        description: "Real-time analytics dashboard for a SaaS team. Complex charting, virtualized tables, and a design system that scales across dozens of screens.",
+        shortDescription: "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
+        image: Img_Porto_2,
+        bannerImg: Img_Porto_banner_1,
+        linkWork: "#",
+        heroBgColor: '#FF9E1B',
+        label: ["Tailwind CSS", "Design"],
+        imageOrder: 1,
+        textOrder: 2,
+        year: "2023",
+        role: "UI/UX Designer & Frontend Developer",
+        duration: "3 months",
+        liveUrl: "#",
+        tools: ["React", "Recharts", "Tailwind CSS", "Figma", "Framer Motion", "Supabase"],
+        challenge: ["Product pages had to stay under a 1.2s LCP on mid-tier mobile devices.", "Merchandisers needed layout control without shipping code.", "The dashboard had 40+ screens but no shared design system."],
+        solution: "Conducted a full UX audit and card-sorting sessions with 8 power users to understand their mental models. Consolidated the 12 screens into a unified dashboard with a persistent sidebar and a modular widget system. Built a shared component library with Recharts for all data visualizations and implemented real-time updates via Supabase subscriptions.",
+        results: [
+            { metric: "-40%", label: "Time on Task" },
+            { metric: "4.7/5", label: "User Satisfaction" },
+            { metric: "30+", label: "Reusable Components" },
+            { metric: "0ms", label: "Data Stale Time" },
+        ],
+        gallery: [Img_Porto_2, Img_Porto_3],
+    },
+    {
+        slug: "halo-banking",
+        title: "Halo Banking",
+        subtitle: "Mobile Web App",
+        description: "Progressive web app for a neobank. Motion-first interactions, tactile card animations, and rock-solid accessibility across every flow.",
+        shortDescription: "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
+        image: Img_Porto_3,
+        bannerImg: Img_Porto_1,
+        heroBgColor: '#C4FFDA',
+        linkWork: "#",
+        label: ["Design"],
+        imageOrder: 2,
+        textOrder: 1,
+        year: "2023",
+        role: "Product Designer",
+        duration: "5 months",
+        liveUrl: "#",
+        tools: ["Figma", "Protopie", "GSAP", "React", "PWA", "Framer Motion"],
+        challenge: "A fintech startup needed to launch their mobile banking PWA in under 5 months. Their core challenge: making complex financial actions — transfers, bill payments, micro-investments — feel as intuitive as native iOS apps, while meeting strict WCAG 2.1 AA accessibility standards.",
+        solution: "Designed a motion-first design language where every interaction had a physical, tactile feel: card flip animations for account switching, spring-based gesture controls for swipe actions, and a custom haptic feedback system. All flows were accessibility-audited and tested with screen readers. The PWA was installable on Android and iOS with offline capability for balance checks.",
+        results: [
+            { metric: "4.9★", label: "App Store Rating" },
+            { metric: "AA", label: "WCAG Compliance" },
+            { metric: "12K+", label: "Users in Month 1" },
+            { metric: "78%", label: "D30 Retention" },
+        ],
+        gallery: [Img_Porto_3, Img_Porto_1],
+    },
+];
 
-]
+export { PortfolioData };
 
-export { PortfolioData }

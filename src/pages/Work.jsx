@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { PortfolioData } from '../utils/PortfolioData';
 
 function Work() {
@@ -38,7 +39,9 @@ function Work() {
                 {filteredData.map((item, index) => (
                     <div key={index}>
                         <figure className='mb-4'>
-                            <img className='w-full' src={item.image} alt={item.title} />
+                            <Link to={`/work/${item.slug}`} className="block overflow-hidden">
+                                <img className='w-full hover:scale-105 transition-transform duration-500 ease-out' src={item.image} alt={item.title} />
+                            </Link>
                             <figcaption className='mt-6'>
                                 <h3 className='text-[#665B53] uppercase text-xs mb-3'>{item.subtitle}</h3>
                                 <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
@@ -48,12 +51,15 @@ function Work() {
                                         <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={index}>{label}</li>
                                     ))}
                                 </ul>
-                                <a className="btn-outline inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5" href={item.linkWork} target="_blank" rel="noopener noreferrer">
-                                    <span className="self-center">View project</span>
+                                <Link
+                                    className="btn-outline inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5"
+                                    to={`/work/${item.slug}`}
+                                >
+                                    <span className="self-center">View Case Study</span>
                                     <svg className="self-center" width="9" height="9" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"></path>
                                     </svg>
-                                </a>
+                                </Link>
                             </figcaption>
                         </figure>
                     </div>
@@ -64,4 +70,4 @@ function Work() {
     );
 };
 
-export default Work;
+export default Work;

@@ -1,6 +1,7 @@
 import './style.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Work from './pages/Work';
+import WorkDetail from './pages/WorkDetail';
 import { PortfolioData } from './utils/PortfolioData'
 import { StackedPortfolio } from './components/SecWork'
 import equalisign from './assets/IMG_0492.jpg'
@@ -12,6 +13,7 @@ function Index() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/work" element={<Work />} />
+				<Route path="/work/:slug" element={<WorkDetail />} />
 			</Routes>
 			<Footer />
 		</BrowserRouter>
@@ -21,7 +23,7 @@ function Index() {
 function Home() {
 	return (
 		<>
-			<div className='hero mt-20 mb-20'>
+			<div className='hero mt-40 mb-20'>
 				<div className="container mx-auto">
 					<figure className='w-63.5 mx-auto'>
 						<img className='rounded-full' src={equalisign} alt="equali.sign" />
@@ -99,7 +101,7 @@ function Home() {
 function Nav() {
 	return (
 		<>
-			<header className='mt-8 lg:mx-14'>
+			<header className='w-full fixed left-0 top-6 z-1030'>
 				<div className='container mx-auto'>
 					<div className='glass font-hanken py-3 px-8 rounded-full'>
 						<div className='flex justify-between'>
