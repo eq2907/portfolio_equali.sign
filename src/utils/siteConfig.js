@@ -18,7 +18,7 @@ const siteConfig = {
 	profilePhoto,
 
 	// ── Short intro section (home page) ───────
-	introHeading: 'Clean code, thoughtful UX, and interfaces built to last.',
+	introHeading: 'crafting interfaces',
 	introBio: `I started my career in design back in 2020. As time passed, I wanted to provide my clients
 with more than just design. This led me to explore web development using powerful low-code
 platforms such as Webflow, Tilda, Weblium and others. With my dual expertise in both web design
