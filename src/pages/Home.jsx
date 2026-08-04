@@ -38,7 +38,7 @@ function Home() {
 						<h1 className='text-6xl font-semibold'>
 							<span className='font-hanken uppercase block'>{title}</span>
 							<span className='block font-bodoni italic my-2.5'>
-								{introHeadingBefore && introHeadingBefore.trim()}{' '}
+								{/* {introHeadingBefore && introHeadingBefore.trim()}{' '} */}
 								<span className='text-primary'>{taglineAccent}</span>{' '}
 								{introHeadingAfter && introHeadingAfter.trim()}
 							</span>
@@ -99,7 +99,7 @@ function Home() {
 				<div className='grid grid-cols-2 gap-6'>
 					<div className='text-center self-center'>
 						<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.4] mb-3.5'>
-							<span className='font-bodoni italic text-[#CC2B0E] normal-case'>{contactHeading}</span>
+							<span className='' dangerouslySetInnerHTML={{ __html: contactHeading }} />
 						</h2>
 						<p className='font-hanken font-normal text-xl leading-[1.8] mb-6 max-w-127.5 mx-auto'>
 							{contactSubtext}

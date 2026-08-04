@@ -27,7 +27,7 @@ My focus is on delivering exceptional work that meets the needs of my clients an
 	resumeUrl: '#',
 
 	// ── Contact form ──────────────────────────
-	contactHeading: "Let's start A conversation",
+	contactHeading: `<i class='font-bodoni normal-case' style="color:#CC2B0E;">Let's start A</i><br/> <span class='font-hanken'> CONVERSATION</span>`,
 	contactSubtext: "Have a project, a question, or just want to say hello? Fill out the form and I'll get back to you as soon as possible.",
 	/** Set to a mailto:, a form API endpoint, or leave '#' */
 	contactFormAction: '#',
@@ -46,7 +46,7 @@ My focus is on delivering exceptional work that meets the needs of my clients an
 	footerSubheading: "Let's build it.",
 	/** Footer quick-links (right column) */
 	footerLinks: [
-		{ label: 'Write Email', href: 'mailto:hello@example.com' },
+		{ label: 'Write Email', href: 'mailto:eq.susanto@gmail.com' },
 		{ label: 'Work', href: '/work' },
 	],
 
@@ -55,7 +55,7 @@ My focus is on delivering exceptional work that meets the needs of my clients an
 	// SVG icons are matched by platform name in Footer.jsx
 	social: [
 		{ platform: 'linkedin', href: '#' },
-		{ platform: 'github',   href: '#' },
+		{ platform: 'github', href: '#' },
 		{ platform: 'instagram', href: '#' },
 	],
 };
