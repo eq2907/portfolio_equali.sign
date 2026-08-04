@@ -1,6 +1,7 @@
 import Img_Porto_1 from '../assets/Img_Porto_1.jpg';
-import Img_Porto_2 from '../assets/corporate_accountability.png';
-import Img_Porto_banner_1 from '../assets/daniel-james-0tTYVEMR9rM-unsplash.jpg';
+import Img_Porto_2 from '../assets/corporateaccountability_thumbnail.png';
+import Img_Porto_banner_2 from '../assets/daniel-james-0tTYVEMR9rM-unsplash.jpg';
+import Img_Porto_stack_2 from '../assets/corporateaccountability_stackcard.jpg';
 import Img_Porto_3 from '../assets/Img_Porto_3.jpg';
 
 const PortfolioData = [
@@ -12,6 +13,7 @@ const PortfolioData = [
         shortDescription: "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
         image: Img_Porto_1,
         bannerImg: Img_Porto_1,
+        stackCardImg: '',
         heroBgColor: '#C4FFDA',
         linkWork: "#",
         label: ["PHP", "Laravel", "Tailwind CSS", "Design"],
@@ -20,6 +22,7 @@ const PortfolioData = [
         year: "2024",
         role: "Frontend Developer & UI Designer",
         duration: "4 months",
+        client: "Northwind Commerce",
         liveUrl: "#",
         tools: ["React", "TypeScript", "Laravel", "PHP", "Tailwind CSS", "Figma", "GSAP"],
         challenge: "The client had an outdated monolithic e-commerce setup with a poor mobile experience and conversion rates below 1.2%. The existing codebase made it nearly impossible to ship new features without breaking existing ones. They needed a modern, scalable frontend that could handle flash sales with thousands of concurrent users.",
@@ -39,16 +42,18 @@ const PortfolioData = [
         description: "Real-time analytics dashboard for a SaaS team. Complex charting, virtualized tables, and a design system that scales across dozens of screens.",
         shortDescription: "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
         image: Img_Porto_2,
-        bannerImg: Img_Porto_banner_1,
+        stackCardImg: Img_Porto_stack_2,
+        bannerImg: Img_Porto_banner_2,
         linkWork: "#",
-        heroBgColor: '#FF9E1B',
+        heroBgColor: '#68CBC5',
         label: ["Tailwind CSS", "Design"],
         imageOrder: 1,
         textOrder: 2,
         year: "2023",
         role: "UI/UX Designer & Frontend Developer",
         duration: "3 months",
-        liveUrl: "#",
+        client: "Northwind Commerce",
+        liveUrl: "https://corporateaccountability.org/",
         tools: ["React", "Recharts", "Tailwind CSS", "Figma", "Framer Motion", "Supabase"],
         challenge: ["Product pages had to stay under a 1.2s LCP on mid-tier mobile devices.", "Merchandisers needed layout control without shipping code.", "The dashboard had 40+ screens but no shared design system."],
         solution: "Conducted a full UX audit and card-sorting sessions with 8 power users to understand their mental models. Consolidated the 12 screens into a unified dashboard with a persistent sidebar and a modular widget system. Built a shared component library with Recharts for all data visualizations and implemented real-time updates via Supabase subscriptions.",
@@ -67,6 +72,7 @@ const PortfolioData = [
         description: "Progressive web app for a neobank. Motion-first interactions, tactile card animations, and rock-solid accessibility across every flow.",
         shortDescription: "A headless storefront built with React and TypeScript. Focused on fast product discovery, buttery-smooth animations, and a checkout flow that converts.",
         image: Img_Porto_3,
+        stackCardImg: '',
         bannerImg: Img_Porto_1,
         heroBgColor: '#C4FFDA',
         linkWork: "#",
@@ -76,6 +82,7 @@ const PortfolioData = [
         year: "2023",
         role: "Product Designer",
         duration: "5 months",
+        client: "Northwind Commerce",
         liveUrl: "#",
         tools: ["Figma", "Protopie", "GSAP", "React", "PWA", "Framer Motion"],
         challenge: "A fintech startup needed to launch their mobile banking PWA in under 5 months. Their core challenge: making complex financial actions — transfers, bill payments, micro-investments — feel as intuitive as native iOS apps, while meeting strict WCAG 2.1 AA accessibility standards.",

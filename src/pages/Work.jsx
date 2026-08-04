@@ -37,15 +37,15 @@ function Work() {
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-28'>
                 {filteredData.map((item, index) => (
-                    <div key={index}>
+                    <div className='bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-[1.02] transition-all duration-300' key={index}>
                         <figure className='mb-4'>
-                            <Link to={`/work/${item.slug}`} className="block overflow-hidden">
-                                <img className='w-full hover:scale-105 transition-transform duration-500 ease-out' src={item.image} alt={item.title} />
+                            <Link to={`/work/${item.slug}`} className="block overflow-hidden" style={{ backgroundColor: item.heroBgColor }}>
+                                <img className='w-full aspect-4/3 object-cover hover:scale-105 transition-transform duration-500 ease-out' src={item.image} alt={item.title} />
                             </Link>
-                            <figcaption className='mt-6'>
-                                <h3 className='text-[#665B53] uppercase text-xs mb-3'>{item.subtitle}</h3>
+                            <figcaption className='mt-6 px-8 pb-4'>
+                                <h3 className='text-[#665B53] uppercase text-xs mb-1.5'>{item.subtitle}</h3>
                                 <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
-                                <p className='font-hanken font-normal my-2 text-sm leading-[1.8]'>{item.description}</p>
+                                <p className='font-hanken font-normal my-2 text-base leading-[1.8]'>{item.description}</p>
                                 <ul className='flex flex-wrap gap-2 mt-4 mb-4'>
                                     {(Array.isArray(item.label) ? item.label : []).map((label, index) => (
                                         <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={index}>{label}</li>
@@ -70,4 +70,4 @@ function Work() {
     );
 };
 
-export default Work;
+export default Work;

@@ -6,11 +6,11 @@ import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function Portfolio({ title, subtitle, description, image, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
+function Portfolio({ title, subtitle, description, stackCardImg, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
 
 	return (
-		<div className='portfolio-card lg:h-[60vh] 2xl:h-[50vh] w-full bg-white'>
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:h-[60vh] 2xl:h-[50vh]'>
+		<div className='portfolio-card lg:h-[60vh] 2xl:h-screen w-full bg-white'>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:h-[60vh] 2xl:h-screen'>
 				<div style={{ order: textOrder }} className='bg-white flex flex-col justify-center h-full font-hanken text-center p-8 lg:p-16'>
 					<div className='self-center'>
 						<h3 className='text-[#665B53] text-center uppercase text-sm mb-3'>{subtitle}</h3>
@@ -25,7 +25,7 @@ function Portfolio({ title, subtitle, description, image, linkWork, label, image
 					</div>
 				</div>
 				<div style={{ order: imageOrder }} className='w-full h-full min-h-87.5 md:min-h-full relative'>
-					<img className='w-full h-full object-cover' src={image} alt={title} />
+					<img className='w-full h-full object-cover' src={stackCardImg} alt={title} />
 					<div className='absolute bottom-8 right-8'>
 						<ul className='flex gap-3'>
 							{(Array.isArray(label) ? label : []).map((item, index) => (
