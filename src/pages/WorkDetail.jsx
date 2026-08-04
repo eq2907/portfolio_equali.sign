@@ -41,7 +41,7 @@ function WorkDetail() {
         <div className='work-detail'>
             <div className='hero-work h-screen relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
                 <figure ref={heroRef} className='w-full h-screen'>
-                    <img ref={heroImgRef} className='w-full object-contain' src={project.image} alt={project.title} />
+                    <img ref={heroImgRef} className='w-full h-full object-cover' src={project.image} alt={project.title} />
                 </figure>
                 <div className='absolute bottom-42 left-0 w-full z-10'>
                     <div className='container mx-auto'>
@@ -104,7 +104,7 @@ function WorkDetail() {
                                 <p className="font-hanken text-base md:text-lg leading-[1.75] text-secondary-foreground">
                                     {project.description}
                                 </p>
-                                <Link className="btn-outline inline-flex text-sm items-center gap-x-3 mt-6 font-semibold uppercase px-6 pt-2.5 pb-2.5" to={project.liveUrl}>
+                                <Link className="btn-outline inline-flex text-sm items-center gap-x-3 mt-6 font-semibold uppercase px-6 pt-2.5 pb-2.5" target="_blank" to={project.liveUrl}>
                                     <span className="self-center">View Live Website</span>
                                     <svg className="self-center" width="9" height="9" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"></path>

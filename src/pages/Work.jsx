@@ -13,7 +13,7 @@ function Work() {
 
     return (
         <div className='container mx-auto'>
-            <div className='mt-20 mb-14'>
+            <div className='mt-40 mb-14'>
                 <h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Discover work</h3>
                 <h1 className='text-6xl leading-18'>
                     <span className='font-hanken font-semibold uppercase block'>Every project,</span>
@@ -45,7 +45,7 @@ function Work() {
                             <figcaption className='mt-6 px-8 pb-4'>
                                 <h3 className='text-[#665B53] uppercase text-xs mb-1.5'>{item.subtitle}</h3>
                                 <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
-                                <p className='font-hanken font-normal my-2 text-base leading-[1.8]'>{item.description}</p>
+                                <p className='font-hanken font-normal my-2 text-base leading-[1.8] line-clamp-3'>{item.description}</p>
                                 <ul className='flex flex-wrap gap-2 mt-4 mb-4'>
                                     {(Array.isArray(item.label) ? item.label : []).map((label, index) => (
                                         <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={index}>{label}</li>
