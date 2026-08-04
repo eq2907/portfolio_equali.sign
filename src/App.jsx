@@ -1,5 +1,6 @@
 import './style.css'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Work from './pages/Work';
 import WorkDetail from './pages/WorkDetail';
 import { PortfolioData } from './utils/PortfolioData'
@@ -9,6 +10,7 @@ import equalisign from './assets/IMG_0492.jpg'
 function Index() {
 	return (
 		<BrowserRouter>
+			<ScrollToTop />
 			<Nav />
 			<Routes>
 				<Route path="/" element={<Home />} />
@@ -18,6 +20,14 @@ function Index() {
 			<Footer />
 		</BrowserRouter>
 	)
+}
+
+function ScrollToTop() {
+	const { pathname } = useLocation()
+	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'instant' })
+	}, [pathname])
+	return null
 }
 
 function Home() {
