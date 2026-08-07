@@ -11,6 +11,19 @@ import { initButtonEffect } from './utils/buttonEffect';
 
 function AppContent() {
 	const location = useLocation();
+	const handleScroll = (id) => {
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		} else {
+			setTimeout(() => {
+				const retryElement = document.getElementById(id);
+				if (retryElement) {
+					retryElement.scrollIntoView({ behavior: 'smooth' });
+				}
+			}, 100);
+		}
+	};
 
 	useEffect(() => {
 		// Initialize the button effect whenever the location changes
@@ -19,7 +32,7 @@ function AppContent() {
 
 	return (
 		<>
-			<Nav />
+			<Nav handleScroll={handleScroll} />
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/work' element={<Work />} />

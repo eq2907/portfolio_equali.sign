@@ -49,13 +49,13 @@ function WorkDetail() {
     if (!project) {
         return <div>Project not found</div>;
     }
-    const currentIndex = PortfolioData.findIndex((p) => p.slug === slug);
+
     const nextProjects = PortfolioData.filter((p) => p.slug !== slug).slice(0, 3);
 
     return (
         <div className='work-detail'>
-            <div className='hero-work h-[80vh] relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
-                <figure ref={heroRef} className='w-full h-[80vh]'>
+            <div className='hero-work h-[80vh] 2xl:h-[90vh] relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
+                <figure ref={heroRef} className='w-full h-[80vh] 2xl:h-[90vh]'>
                     <img ref={heroImgRef} className='w-full h-full object-cover' src={project.image} alt={project.title} fetchPriority='high' decoding='async' />
                 </figure>
                 <div className='absolute bottom-42 left-0 w-full z-10'>
@@ -144,14 +144,14 @@ function WorkDetail() {
                                 onClick={() => navigate(`/work/${nextProject.slug}`)}
                                 className="group w-full text-left cursor-pointer"
                             >
-                                <div className="relative overflow-hidden h-[50vh] bg-secondary rounded-2xl">
+                                <div className='relative overflow-hidden h-[35vh] bg-secondary rounded-2xl'>
                                     <img
                                         src={nextProject.image}
                                         alt={nextProject.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                        className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out'
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a06]/70 to-transparent" />
-                                    <div className="absolute bottom-8 left-8 right-8">
+                                    <div className='absolute inset-0 bg-linear-to-t from-[#0d0a06]/70 to-transparent' />
+                                    <div className='absolute bottom-8 left-8 right-8'>
                                         <div className='container mx-auto'>
                                             <div className='flex items-end justify-between'>
                                                 <div>

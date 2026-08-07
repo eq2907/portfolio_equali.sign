@@ -19,9 +19,9 @@ function Home() {
 		introHeading,
 		introBio,
 		resumeUrl,
-		contactHeading,
-		contactSubtext,
-		contactFormAction,
+		// contactHeading,
+		// contactSubtext,
+		// contactFormAction,
 	} = siteConfig;
 
 	// Split tagline accent word out of the intro heading for styling
@@ -69,8 +69,8 @@ function Home() {
 			</section>
 
 			{/* ── Short intro ───────────────────────────────────── */}
-			<section className='short-intro-wrapper py-24 border-y border-y-[#DDD7CD]'>
-				<div className='container mx-auto'>
+			<section className='short-intro-wrapper py-24 border-y border-y-[#DDD7CD]' id='about'>
+				<div className='container mx-auto' id='contact'>
 					<div className='grid grid-cols-12 gap-6'>
 						<div className='col-span-8'>
 							<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Short intro</h3>
@@ -110,7 +110,7 @@ function Home() {
 			</section>
 
 			{/* ── Contact / Get in touch ────────────────────────── */}
-			<section className='get-in-touch-wrapper hidden'>
+			{/* <section className='get-in-touch-wrapper' id='contact'>
 				<div className='grid grid-cols-2 gap-6'>
 					<div className='text-center self-center'>
 						<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.4] mb-3.5'>
@@ -142,7 +142,7 @@ function Home() {
 						</form>
 					</div>
 				</div>
-			</section>
+			</section> */}
 		</>
 	);
 }

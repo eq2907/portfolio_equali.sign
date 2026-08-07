@@ -1,9 +1,12 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import siteConfig from '../utils/siteConfig';
 import gsap from 'gsap';
 
-const AnimatedLink = ({ item }) => {
+const AnimatedLink = ({ item, onClick }) => {
+	const location = useLocation();
+	const isActive = location.pathname === item.to || (item.to !== '/' && location.pathname.startsWith(item.to));
+
 	const text1Ref = useRef(null);
 	const text2Ref = useRef(null);
 
@@ -40,9 +43,10 @@ const AnimatedLink = ({ item }) => {
 	return (
 		<Link
 			to={item.to}
-			className="relative block overflow-hidden"
+			className={`relative block overflow-hidden hover:font-bold  ${isActive ? 'active font-bold' : ''}`}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
+			onClick={onClick}
 			style={{ perspective: '1000px' }}
 		>
 			<span ref={text1Ref} className="block" style={{ transformOrigin: '50% 100%' }}>{item.label}</span>
@@ -51,7 +55,7 @@ const AnimatedLink = ({ item }) => {
 	);
 };
 
-function Nav() {
+function Nav({ handleScroll }) {
 	const { nameParts, nav, navCta } = siteConfig;
 
 	return (
@@ -64,11 +68,11 @@ function Nav() {
 							<span className='text-primary'>{nameParts.accent}</span>
 							{nameParts.after}
 						</Link>
-						<nav className='flex gap-x-6 [&_a]:uppercase [&_a]:font-medium [&_a]:text-base [&_a]:self-center'>
+						<nav className='flex gap-x-6 [&_a]:uppercase [&_a]:text-base [&_a]:self-center'>
 							{nav.map((item) => (
-								<AnimatedLink key={item.label} item={item} />
+								<AnimatedLink key={item.label} item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
 							))}
-							<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2' data-block="button">
+							<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2' onClick={() => handleScroll('contact')} data-block="button">
 								<span className='button__flair'></span>
 								<span className="self-center relative z-10">{navCta.label}</span>
 							</Link>

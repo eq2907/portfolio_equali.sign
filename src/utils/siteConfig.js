@@ -36,10 +36,10 @@ My focus is on delivering exceptional work that meets the needs of my clients an
 	nav: [
 		{ label: 'About', to: '/' },
 		{ label: 'Work', to: '/work' },
-		{ label: 'Contact', to: '/' },
+		// { label: 'Contact', to: '/' },
 	],
 	/** CTA button in the nav bar */
-	navCta: { label: "Let's talk", to: '/' },
+	navCta: { label: "Get in Touch", to: '/' },
 
 	// ── Footer ────────────────────────────────
 	footerHeading: 'Have a project in mind?',
