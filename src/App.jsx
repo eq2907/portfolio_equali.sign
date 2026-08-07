@@ -7,24 +7,18 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import WorkDetail from './pages/WorkDetail';
-
 import { initButtonEffect } from './utils/buttonEffect';
 
-// Scrolls to the top instantly on every route change
-function ScrollToTop() {
-	const { pathname } = useLocation();
-	useEffect(() => {
-		window.scrollTo({ top: 0, behavior: 'instant' });
-		// Initialize the global button hover effect with a tiny delay to ensure DOM is ready
-		setTimeout(initButtonEffect, 50);
-	}, [pathname]);
-	return null;
-}
+function AppContent() {
+	const location = useLocation();
 
-function App() {
+	useEffect(() => {
+		// Initialize the button effect whenever the location changes
+		initButtonEffect();
+	}, [location]);
+
 	return (
-		<BrowserRouter>
-			<ScrollToTop />
+		<>
 			<Nav />
 			<Routes>
 				<Route path='/' element={<Home />} />
@@ -32,6 +26,14 @@ function App() {
 				<Route path='/work/:slug' element={<WorkDetail />} />
 			</Routes>
 			<Footer />
+		</>
+	);
+}
+
+function App() {
+	return (
+		<BrowserRouter>
+			<AppContent />
 		</BrowserRouter>
 	);
 }

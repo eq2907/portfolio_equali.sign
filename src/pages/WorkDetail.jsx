@@ -27,6 +27,8 @@ function WorkDetail() {
     useEffect(() => {
         if (!project) return;
 
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
         const ctx = gsap.context(() => {
             // Hero parallax
             gsap.to(heroImgRef.current, {
