@@ -33,7 +33,13 @@ function Home() {
 			<div className='hero mt-40 mb-20'>
 				<div className='container mx-auto'>
 					<figure className='w-63.5 mx-auto'>
-						<img className='rounded-full' src={profilePhoto} alt={siteConfig.name} />
+						<img
+							className='rounded-full'
+							src={profilePhoto}
+							alt={siteConfig.name}
+							fetchPriority='high'
+							decoding='async'
+						/>
 					</figure>
 					<div className='hero__description text-center mt-16'>
 						<h1 className='text-6xl font-semibold'>
@@ -90,7 +96,13 @@ function Home() {
 						</div>
 						<div className='col-span-4 self-center'>
 							<figure className='w-75 mx-auto'>
-								<img className='rounded-full' src={profilePhoto} alt={siteConfig.name} />
+								<img
+									className='rounded-full'
+									src={profilePhoto}
+									alt={siteConfig.name}
+									loading='lazy'
+									decoding='async'
+								/>
 							</figure>
 						</div>
 					</div>

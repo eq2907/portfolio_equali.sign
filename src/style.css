@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+/* Google Fonts are loaded non-blocking via <link> tags in index.html */
 @import "tailwindcss";
 
 @theme {
@@ -42,7 +41,7 @@
 		@apply overflow-hidden relative rounded-full;
 
 		& .button__flair {
-			@apply absolute pointer-events-none top-0 bottom-0 left-0 right-0 before:aspect-square before:bg-secondary-foreground before:rounded-[50%] before:block before:absolute before:left-0 before:pointer-events-none before:top-0 before:w-[170%] before:-translate-x-2/4 before:-translate-y-2/4;
+			@apply absolute pointer-events-none top-0 bottom-0 left-0 right-0 before:aspect-square before:bg-secondary-foreground before:rounded-[50%] before:block before:absolute before:left-0 before:pointer-events-none before:top-0 before:w-[200%] before:-translate-x-2/4 before:-translate-y-2/4;
 		}
 
 		&.button--stroke {

@@ -26,7 +26,7 @@ function Portfolio({ title, subtitle, description, image, linkWork, label, image
 					</div>
 				</div>
 				<div style={{ order: imageOrder }} className='w-full h-full min-h-87.5 md:min-h-full relative'>
-					<img className='w-full h-full object-cover' src={image} alt={title} />
+					<img className='w-full h-full object-cover' src={image} alt={title} loading='lazy' decoding='async' />
 					<div className='absolute bottom-8 right-8'>
 						<ul className='flex gap-3'>
 							{(Array.isArray(label) ? label : []).map((item, index) => (

@@ -41,7 +41,7 @@ function WorkDetail() {
         <div className='work-detail'>
             <div className='hero-work h-screen relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
                 <figure ref={heroRef} className='w-full h-screen'>
-                    <img ref={heroImgRef} className='w-full h-full object-cover' src={project.image} alt={project.title} />
+                    <img ref={heroImgRef} className='w-full h-full object-cover' src={project.image} alt={project.title} fetchPriority='high' decoding='async' />
                 </figure>
                 <div className='absolute bottom-42 left-0 w-full z-10'>
                     <div className='container mx-auto'>

@@ -40,7 +40,7 @@ function Work() {
                     <div className='bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-[1.02] transition-all duration-300' key={index}>
                         <figure className='mb-4'>
                             <Link to={`/work/${item.slug}`} className="block overflow-hidden" style={{ backgroundColor: item.heroBgColor }}>
-                                <img className='w-full aspect-4/3 object-cover hover:scale-105 transition-transform duration-500 ease-out' src={item.image} alt={item.title} />
+                                <img className='w-full aspect-4/3 object-cover hover:scale-105 transition-transform duration-500 ease-out' src={item.image} alt={item.title} loading='lazy' decoding='async' />
                             </Link>
                             <figcaption className='mt-6 px-8 pb-4'>
                                 <h3 className='text-[#665B53] uppercase text-xs mb-1.5'>{item.subtitle}</h3>
