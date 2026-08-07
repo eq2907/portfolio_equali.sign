@@ -50,7 +50,7 @@ function WorkDetail() {
         return <div>Project not found</div>;
     }
     const currentIndex = PortfolioData.findIndex((p) => p.slug === slug);
-    const nextProject = PortfolioData[(currentIndex + 1) % PortfolioData.length];
+    const nextProjects = PortfolioData.filter((p) => p.slug !== slug).slice(0, 3);
 
     return (
         <div className='work-detail'>
@@ -135,38 +135,43 @@ function WorkDetail() {
             </div>
             <div className='work__other mb-24'>
                 <div className='container mx-auto'>
-                    <h3 className='font-hanken text-3xl font-bold mb-10'>Next Project</h3>
-                    <button
-                        type="button"
-                        onClick={() => navigate(`/work/${nextProject.slug}`)}
-                        className="group w-full text-left cursor-pointer"
-                    >
-                        <div className="relative overflow-hidden h-[50vh] bg-secondary rounded-2xl">
-                            <img
-                                src={nextProject.image}
-                                alt={nextProject.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a06]/70 to-transparent" />
-                            <div className="absolute bottom-8 left-8 right-8">
-                                <div className='container mx-auto'>
-                                    <div className='flex items-end justify-between'>
-                                        <div>
-                                            <ul className='flex items-center gap-4 mb-6'>
-                                                <li className='text-white uppercase text-sm glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{nextProject.subtitle}</li>
-                                            </ul>
-                                            <h2 className='text-white uppercase font-semibold text-4xl lg:text-5xl mb-6'>{nextProject.title}</h2>
-                                        </div>
-                                        <div className="w-14 h-14 border border-white rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300 shrink-0 ml-4">
-                                            <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
+                    <h3 className='font-hanken text-3xl font-bold mb-10'>Other Projects</h3>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                        {nextProjects.map((nextProject, index) => (
+                            <button
+                                key={index}
+                                type="button"
+                                onClick={() => navigate(`/work/${nextProject.slug}`)}
+                                className="group w-full text-left cursor-pointer"
+                            >
+                                <div className="relative overflow-hidden h-[50vh] bg-secondary rounded-2xl">
+                                    <img
+                                        src={nextProject.image}
+                                        alt={nextProject.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a06]/70 to-transparent" />
+                                    <div className="absolute bottom-8 left-8 right-8">
+                                        <div className='container mx-auto'>
+                                            <div className='flex items-end justify-between'>
+                                                <div>
+                                                    <ul className='flex items-center gap-4 mb-4'>
+                                                        <li className='text-white uppercase text-xs glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{nextProject.subtitle}</li>
+                                                    </ul>
+                                                    <h2 className='text-white uppercase font-semibold text-xl lg:text-2xl mb-6'>{nextProject.title}</h2>
+                                                </div>
+                                                <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300 shrink-0 ml-4">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </button>
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
