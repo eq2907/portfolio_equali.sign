@@ -8,11 +8,15 @@ import Home from './pages/Home';
 import Work from './pages/Work';
 import WorkDetail from './pages/WorkDetail';
 
+import { initButtonEffect } from './utils/buttonEffect';
+
 // Scrolls to the top instantly on every route change
 function ScrollToTop() {
 	const { pathname } = useLocation();
 	useEffect(() => {
 		window.scrollTo({ top: 0, behavior: 'instant' });
+		// Initialize the global button hover effect with a tiny delay to ensure DOM is ready
+		setTimeout(initButtonEffect, 50);
 	}, [pathname]);
 	return null;
 }

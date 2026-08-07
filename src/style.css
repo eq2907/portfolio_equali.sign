@@ -19,17 +19,46 @@
 	}
 
 	.btn-outline {
-		@apply border border-secondary-foreground rounded-full hover:bg-white transition-colors duration-300;
+		@apply border border-secondary-foreground rounded-full transition-colors duration-300 hover:text-white;
+		& svg {
+			& path {
+				@apply transition-colors duration-300;
+			}
+		}
+		&:hover {
+			& svg {
+				& path {
+					@apply stroke-white;
+				}
+			}
+		}
 	}
 
 	.btn-white-solid {
 		@apply bg-white text-secondary-foreground rounded-full transition-colors duration-300;
 	}
 
+	.button-effect {
+		@apply overflow-hidden relative rounded-full;
+
+		& .button__flair {
+			@apply absolute pointer-events-none top-0 bottom-0 left-0 right-0 before:aspect-square before:bg-secondary-foreground before:rounded-[50%] before:block before:absolute before:left-0 before:pointer-events-none before:top-0 before:w-[170%] before:-translate-x-2/4 before:-translate-y-2/4;
+		}
+
+		&.button--stroke {
+			@apply after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:pointer-events-none;
+			& .button__flair {
+				 @apply origin-top-left will-change-transform scale-0;
+			}
+		}
+	}
+
 	input,
 	textarea {
 		@apply bg-white w-full px-6 py-3;
 	}
+
+
 
 	.filter-work {
 		& li {

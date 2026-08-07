@@ -4,12 +4,13 @@ import siteConfig from '../utils/siteConfig';
 
 // ── Arrow icon shared by buttons ──────────────────────────────────────────
 const ArrowIcon = () => (
-	<svg className='self-center' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+	<svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
 		<path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
 	</svg>
 );
 
 function Home() {
+
 	const {
 		title,
 		taglineAccent,
@@ -76,12 +77,14 @@ function Home() {
 							</h2>
 							<p className='font-hanken font-normal text-xl leading-[1.8] mb-6'>{introBio}</p>
 							<a
-								className='btn-outline inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5'
+								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5'
 								href={resumeUrl}
 								target='_blank'
+								data-block="button"
 								rel='noopener noreferrer'
 							>
-								<span className='self-center'>Download Resume</span>
+								<span className='button__flair'></span>
+								<span className='self-center relative z-10'>Download Resume</span>
 								<ArrowIcon />
 							</a>
 						</div>
@@ -95,7 +98,7 @@ function Home() {
 			</section>
 
 			{/* ── Contact / Get in touch ────────────────────────── */}
-			<section className='get-in-touch-wrapper'>
+			<section className='get-in-touch-wrapper hidden'>
 				<div className='grid grid-cols-2 gap-6'>
 					<div className='text-center self-center'>
 						<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.4] mb-3.5'>

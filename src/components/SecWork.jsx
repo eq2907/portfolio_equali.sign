@@ -16,9 +16,10 @@ function Portfolio({ title, subtitle, description, image, linkWork, label, image
 						<h3 className='text-[#665B53] text-center uppercase text-sm mb-3'>{subtitle}</h3>
 						<h2 className='text-center uppercase font-semibold text-4xl lg:text-5xl mb-4'>{title}</h2>
 						<p className='max-w-md text-center text-base leading-[1.8] text-secondary-foreground/70 mx-auto mb-4'>{description}</p>
-						<Link className='btn-outline inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5' to={slug ? `/work/${slug}` : linkWork}>
-							<span className='self-center'>View Case Study</span>
-							<svg className='self-center' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+						<Link className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5' to={slug ? `/work/${slug}` : linkWork} data-block="button" rel='noopener noreferrer'>
+							<span className='button__flair'></span>
+							<span className='self-center relative z-10'>View Case Study</span>
+							<svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
 							</svg>
 						</Link>
