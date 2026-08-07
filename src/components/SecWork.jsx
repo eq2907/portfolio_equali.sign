@@ -4,6 +4,15 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 
+// ── Arrow icon shared by buttons ──────────────────────────────────────────
+export const ArrowIcon = () => {
+	return (
+		<svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+			<path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
+		</svg>
+	);
+};
+
 gsap.registerPlugin(ScrollTrigger)
 
 function Portfolio({ title, subtitle, description, image, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
@@ -19,9 +28,7 @@ function Portfolio({ title, subtitle, description, image, linkWork, label, image
 						<Link className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5' to={slug ? `/work/${slug}` : linkWork} data-block="button" rel='noopener noreferrer'>
 							<span className='button__flair'></span>
 							<span className='self-center relative z-10'>View Case Study</span>
-							<svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-								<path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
-							</svg>
+							<ArrowIcon />
 						</Link>
 					</div>
 				</div>

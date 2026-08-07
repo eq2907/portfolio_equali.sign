@@ -4,10 +4,20 @@ import { PortfolioData } from '../utils/PortfolioData';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// ── Arrow icon shared by buttons ──────────────────────────────────────────
+export const ArrowIcon = () => {
+    return (
+        <svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
+        </svg>
+    );
+};
+
 gsap.registerPlugin(ScrollTrigger);
 
 function WorkDetail() {
     const { slug } = useParams();
+    const navigate = useNavigate();
     const project = PortfolioData.find((project) => project.slug === slug);
 
     // Refs for animations
@@ -37,6 +47,9 @@ function WorkDetail() {
     if (!project) {
         return <div>Project not found</div>;
     }
+    const currentIndex = PortfolioData.findIndex((p) => p.slug === slug);
+    const nextProject = PortfolioData[(currentIndex + 1) % PortfolioData.length];
+
     return (
         <div className='work-detail'>
             <div className='hero-work h-screen relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
@@ -72,26 +85,6 @@ function WorkDetail() {
                             </li>
                         ))}
                     </ul>
-                    {/* <div className='container mx-auto'>
-                        <ul className='font-hanken font-semibold flex [&_li]:border-r [&_li]:border-r-[#DDD7CD] [&_li]:last:border-r-0 [&_li]:py-10 [&_li]:px-10'>
-                            <li>
-                                <h2 className='text-xs text-[#665B53] uppercase'>Client</h2>
-                                <p className='text-base leading-[1.8]'>{project.client}</p>
-                            </li>
-                            <li>
-                                <h2 className='text-xs text-[#665B53] uppercase'>Role</h2>
-                                <p className='text-base leading-[1.8]'>{project.role}</p>
-                            </li>
-                            <li>
-                                <h2 className='text-xs text-[#665B53] uppercase'>Timeline</h2>
-                                <p className='text-base leading-[1.8]'>{project.duration}</p>
-                            </li>
-                            <li>
-                                <h2 className='text-xs text-[#665B53] uppercase'>Year</h2>
-                                <p className='text-base leading-[1.8]'>{project.year}</p>
-                            </li>
-                        </ul>
-                    </div> */}
                 </div>
 
             </div>
@@ -107,9 +100,7 @@ function WorkDetail() {
                                 <Link className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-6 font-semibold uppercase px-6 pt-2.5 pb-2.5" target="_blank" to={project.liveUrl} data-block="button">
                                     <span className='button__flair'></span>
                                     <span className="self-center relative z-10">View Live Website</span>
-                                    <svg className="self-center relative z-10" width="9" height="9" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"></path>
-                                    </svg>
+                                    <ArrowIcon />
                                 </Link>
                             </div>
                             <div>
@@ -137,10 +128,43 @@ function WorkDetail() {
                                 ))}
                             </ul>
                         </div>
-                        <div className='col-span-8 [&>div:first-child]:mb-10'>
-
-                        </div>
                     </div>
+                </div>
+            </div>
+            <div className='work__other mb-24'>
+                <div className='container mx-auto'>
+                    <h3 className='font-hanken text-3xl font-bold mb-10'>Next Project</h3>
+                    <button
+                        type="button"
+                        onClick={() => navigate(`/work/${nextProject.slug}`)}
+                        className="group w-full text-left cursor-pointer"
+                    >
+                        <div className="relative overflow-hidden h-[50vh] bg-secondary rounded-2xl">
+                            <img
+                                src={nextProject.image}
+                                alt={nextProject.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a06]/70 to-transparent" />
+                            <div className="absolute bottom-8 left-8 right-8">
+                                <div className='container mx-auto'>
+                                    <div className='flex items-end justify-between'>
+                                        <div>
+                                            <ul className='flex items-center gap-4 mb-6'>
+                                                <li className='text-white uppercase text-sm glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{nextProject.subtitle}</li>
+                                            </ul>
+                                            <h2 className='text-white uppercase font-semibold text-4xl lg:text-5xl mb-6'>{nextProject.title}</h2>
+                                        </div>
+                                        <div className="w-14 h-14 border border-white rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300 shrink-0 ml-4">
+                                            <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>

@@ -2,6 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PortfolioData } from '../utils/PortfolioData';
 
+// ── Arrow icon shared by buttons ──────────────────────────────────────────
+const ArrowIcon = () => (
+    <svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
+    </svg>
+);
+
 function Work() {
     const [activeCategory, setActiveCategory] = useState('All');
 
@@ -57,9 +64,7 @@ function Work() {
                                 >
                                     <span className='button__flair'></span>
                                     <span className="self-center relative z-10">View Case Study</span>
-                                    <svg className="self-center relative z-10" width="9" height="9" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"></path>
-                                    </svg>
+                                    <ArrowIcon />
                                 </Link>
                             </figcaption>
                         </figure>

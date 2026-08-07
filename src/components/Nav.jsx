@@ -18,8 +18,9 @@ function Nav() {
 							{nav.map((item) => (
 								<Link key={item.label} to={item.to}>{item.label}</Link>
 							))}
-							<Link to={navCta.to} className='btn-outline px-6 py-2'>
-								{navCta.label}
+							<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2' data-block="button">
+								<span className='button__flair'></span>
+								<span className="self-center relative z-10">{navCta.label}</span>
 							</Link>
 						</nav>
 					</div>
