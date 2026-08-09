@@ -54,8 +54,8 @@ function WorkDetail() {
 
     return (
         <div className='work-detail'>
-            <div className='hero-work h-[80vh] 2xl:h-[90vh] relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
-                <figure ref={heroRef} className='w-full h-[80vh] 2xl:h-[90vh]'>
+            <div className='hero-work h-[80vh] lg:h-[90vh] 2xl:h-[90vh] relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
+                <figure ref={heroRef} className='w-full h-[80vh] lg:h-[90vh] 2xl:h-[90vh]'>
                     <img ref={heroImgRef} className='w-full h-full object-cover' src={project.image} alt={project.title} fetchPriority='high' decoding='async' />
                 </figure>
                 <div className='absolute bottom-42 left-0 w-full z-10'>
@@ -144,7 +144,7 @@ function WorkDetail() {
                                 onClick={() => navigate(`/work/${nextProject.slug}`)}
                                 className="group w-full text-left cursor-pointer"
                             >
-                                <div className='relative overflow-hidden h-[35vh] bg-secondary rounded-2xl'>
+                                <div className='relative overflow-hidden h-[35vh] lg:h-[50vh] 2xl:h-[35vh] bg-secondary rounded-2xl'>
                                     <img
                                         src={nextProject.image}
                                         alt={nextProject.title}
