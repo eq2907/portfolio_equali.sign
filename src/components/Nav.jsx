@@ -43,7 +43,7 @@ const AnimatedLink = ({ item, onClick }) => {
 	return (
 		<Link
 			to={item.to}
-			className={`relative block overflow-hidden hover:font-bold  ${isActive ? 'active font-bold' : ''}`}
+			className={`relative block overflow-hidden hover:font-semibold transition-all duration-300 ${isActive ? 'active font-semibold' : ''}`}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onClick={onClick}

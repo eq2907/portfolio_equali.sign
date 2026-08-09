@@ -15,16 +15,16 @@ export const ArrowIcon = () => {
 
 gsap.registerPlugin(ScrollTrigger)
 
-function Portfolio({ title, subtitle, description, image, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
+function Portfolio({ title, subtitle, shortDescription, image, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
 
 	return (
-		<div className='portfolio-card lg:h-[60vh] 2xl:h-[70vh] w-full bg-white'>
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:h-[60vh] 2xl:h-[70vh]'>
+		<div className='portfolio-card lg:h-[75vh] 2xl:h-[70vh] w-full bg-white'>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:h-[75vh] 2xl:h-[70vh]'>
 				<div style={{ order: textOrder }} className='bg-white flex flex-col justify-center h-full font-hanken text-center p-8 lg:p-16'>
 					<div className='self-center'>
 						<h3 className='text-[#665B53] text-center uppercase text-sm mb-3'>{subtitle}</h3>
-						<h2 className='text-center uppercase font-semibold text-4xl lg:text-5xl mb-4'>{title}</h2>
-						<p className='max-w-md text-center text-base leading-[1.8] text-secondary-foreground/70 mx-auto mb-4'>{description}</p>
+						<h2 className='text-center uppercase font-semibold text-4xl lg:text-5xl leading-[1.2] mb-4'>{title}</h2>
+						<p className='max-w-md text-center text-base leading-[1.8] text-secondary-foreground/70 mx-auto mb-4'>{shortDescription}</p>
 						<Link className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5' to={slug ? `/work/${slug}` : linkWork} data-block="button" rel='noopener noreferrer'>
 							<span className='button__flair'></span>
 							<span className='self-center relative z-10'>View Case Study</span>

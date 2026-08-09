@@ -14,16 +14,12 @@ const siteConfig = {
 	tagline: 'crafting interfaces people love.',
 	/** Italic / accent word highlighted in the hero tagline */
 	taglineAccent: 'interfaces',
-	bio: 'I design and build fast, accessible, and pixel-perfect web experiences using React and TypeScript',
+	bio: 'I design and build fast, accessible, and pixel-perfect web experiences.',
 	profilePhoto,
 
 	// ── Short intro section (home page) ───────
 	introHeading: 'crafting interfaces',
-	introBio: `I started my career in design back in 2020. As time passed, I wanted to provide my clients
-with more than just design. This led me to explore web development using powerful low-code
-platforms such as Webflow, Tilda, Weblium and others. With my dual expertise in both web design
-and development, I bridge the gap between concept and reality to ensure a seamless user experience.
-My focus is on delivering exceptional work that meets the needs of my clients and their customers.`,
+	introBio: `I started my career in design back in 2015. As time passed, I wanted to provide my clients with more than just static visuals, so I specialized in converting Figma and Photoshop designs into clean, responsive HTML, CSS, and JavaScript. With this dual expertise in both web design and front-end development, I bridge the gap between concept and reality to ensure a seamless user experience. My focus remains on delivering exceptional work that meets the needs of my clients and their customers.`,
 	resumeUrl: '#',
 
 	// ── Contact form ──────────────────────────

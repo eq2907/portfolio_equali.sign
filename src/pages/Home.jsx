@@ -51,7 +51,7 @@ function Home() {
 							</span>
 							<span className='font-hanken uppercase block mt-6'>people love.</span>
 						</h1>
-						<p className='font-hanken max-w-136.5 font-normal mx-auto mt-8 text-xl leading-[1.8]'>
+						<p className='font-hanken max-w-120 font-normal mx-auto mt-8 text-xl leading-[1.8]'>
 							{bio}
 						</p>
 					</div>
@@ -74,12 +74,12 @@ function Home() {
 					<div className='grid grid-cols-12 gap-6'>
 						<div className='col-span-8'>
 							<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Short intro</h3>
-							<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.4] mb-3.5'>
-								Clean code,{' '}
-								<span className='font-bodoni italic text-[#CC2B0E] normal-case'>
-									thoughtful UX, and <br /> interfaces
+							<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.3] mb-3.5'>
+								Crafting clean code,{' '}
+								<span className='font-bodoni italic text-[#CC2B0E] normal-case inline-block mb-2'>
+									intuitive UX, and digital experiences
 								</span>{' '}
-								built to last.
+								that stand the test of time.
 							</h2>
 							<p className='font-hanken font-normal text-xl leading-[1.8] mb-6'>{introBio}</p>
 							<a
