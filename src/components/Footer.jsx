@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import siteConfig from '../utils/siteConfig';
 
 // ── Social icon lookup ─────────────────────────────────────────────────────
@@ -51,6 +52,7 @@ const ScrollUpButton = () => (
 // ── Footer ─────────────────────────────────────────────────────────────────
 function Footer() {
 	const { footerHeading, footerSubheading, footerLinks, social } = siteConfig;
+	const location = useLocation();
 
 	return (
 		<footer className='bg-[#181009]'>
@@ -78,9 +80,14 @@ function Footer() {
 					{/* Right column — links + scroll-up */}
 					<div className='col-span-6 self-end'>
 						<ul className='text-right [&_a]:text-white [&_a]:font-hanken [&_a]:font-normal [&_a]:text-xl [&_a]:uppercase flex flex-col gap-2'>
-							{footerLinks.map(({ label, href }) => (
-								<li key={label}><a href={href}>{label}</a></li>
-							))}
+							{footerLinks.map(({ label, href }) => {
+								const isActive = href.startsWith('/') ? (location.pathname === href || (href !== '/' && location.pathname.startsWith(href))) : false;
+								return (
+									<li key={label}>
+										<a className={`link-effect link-effect--metis link-effect--white ${isActive ? 'active font-semibold' : ''}`} href={href}>{label}</a>
+									</li>
+								);
+							})}
 						</ul>
 						<ScrollUpButton />
 					</div>

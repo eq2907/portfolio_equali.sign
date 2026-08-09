@@ -52,12 +52,41 @@
 		}
 	}
 
+	.link-effect {
+        @apply relative;
+        &::before {
+            @apply content-[''];
+        }
+        &::before,
+        &::after {
+            @apply absolute w-full h-px pointer-events-none left-0 top-full;
+        }
+		&.link-effect--white {
+            @apply transition-all duration-300;
+            &::before,
+            &::after {
+                @apply bg-white;
+            }
+        }
+        &.link-effect--metis {
+            &::before {
+                @apply origin-[100%_50%] transition-transform duration-300;
+                transform: scale3d(0, 1, 1);
+            }
+            &.active,
+            &:hover {
+                &::before {
+                    @apply origin-[0%_50%];
+                    transform: scale3d(1, 1, 1);
+                }
+            }
+        }
+    }
+
 	input,
 	textarea {
 		@apply bg-white w-full px-6 py-3;
 	}
-
-
 
 	.filter-work {
 		& li {
