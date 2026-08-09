@@ -15,7 +15,7 @@ export const ArrowIcon = () => {
 
 gsap.registerPlugin(ScrollTrigger)
 
-function Portfolio({ title, subtitle, shortDescription, image, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
+function Portfolio({ title, subtitle, shortDescription, image, associatedImg, associatedName, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
 
 	return (
 		<div className='portfolio-card lg:h-[75vh] 2xl:h-[70vh] w-full bg-white'>
@@ -33,6 +33,12 @@ function Portfolio({ title, subtitle, shortDescription, image, linkWork, label, 
 					</div>
 				</div>
 				<div style={{ order: imageOrder }} className='w-full h-full min-h-87.5 md:min-h-full relative'>
+					{(associatedImg || associatedName) && (
+						<div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-4'>
+							{associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={associatedImg} alt={title} loading='lazy' decoding='async' />}
+							{associatedName && <span className='font-hanken font-semibold text-secondary-foreground uppercase text-sm self-center'>{associatedName}</span>}
+						</div>
+					)}
 					<img className='w-full h-full object-cover' src={image} alt={title} loading='lazy' decoding='async' />
 					<div className='absolute bottom-8 right-8'>
 						<ul className='flex gap-3'>

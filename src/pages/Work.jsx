@@ -42,10 +42,16 @@ function Work() {
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-28'>
                     {filteredData.map((item, index) => (
-                        <div className='bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-[1.02] transition-all duration-300 flex flex-col h-full' key={index}>
-                            <figure className='flex flex-col h-full'>
-                                <Link to={`/work/${item.slug}`} className="block overflow-hidden shrink-0" style={{ backgroundColor: item.heroBgColor }}>
-                                    <img className='w-full aspect-4/3 object-cover hover:scale-105 transition-transform duration-500 ease-out' src={item.image} alt={item.title} loading='lazy' decoding='async' />
+                        <div className='bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col h-full' key={index}>
+                            <figure className='flex flex-col h-full relative group'>
+                                <Link to={`/work/${item.slug}`} className="block overflow-hidden shrink-0 relative" style={{ backgroundColor: item.heroBgColor }}>
+                                    {(item.associatedImg || item.associatedName) && (
+                                        <div className='glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 absolute top-8 left-6 z-10'>
+                                            {item.associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={item.associatedImg} alt={item.title} loading='lazy' decoding='async' />}
+                                            {item.associatedName && <span className='font-hanken font-semibold text-secondary-foreground uppercase text-sm self-center'>{item.associatedName}</span>}
+                                        </div>
+                                    )}
+                                    <img className='w-full aspect-4/3 object-cover group-hover:scale-105 transition-all duration-300' src={item.image} alt={item.title} loading='lazy' decoding='async' />
                                 </Link>
                                 <figcaption className='flex-1 flex flex-col justify-between pt-6 px-8 pb-8'>
                                     <div>

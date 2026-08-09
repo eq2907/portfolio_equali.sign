@@ -1,6 +1,7 @@
 import Img_Porto_1 from '../assets/gamma_paint.jpg';
 import Img_Porto_2 from '../assets/corporateaccountability.jpg';
 import Img_Porto_3 from '../assets/ufoe.jpg';
+import Img_Associated from '../assets/gositus_logo.jpg'
 
 const PortfolioData = [
     {
@@ -19,7 +20,8 @@ const PortfolioData = [
         role: "Frontend Developer",
         duration: "2 months",
         client: "Gamma Paint",
-        associatedWith: "PT. Go Online Solusi",
+        associatedImg: Img_Associated,
+        associatedName: "Associated with PT. Go Online Solusi",
         liveUrl: "https://www.gammapaint.com/",
         tools: ["CodeIgniter", "PHP", "Tailwind CSS", "Figma", "GSAP"],
         challenge: ["The client wanted a modern, animated company profile website.", "Needed a design system that reflects the Gamma Paint brand.", "Required a user-friendly interface for showcasing products and services."],
@@ -48,7 +50,8 @@ const PortfolioData = [
         role: "Frontend Developer",
         duration: "4 months",
         client: "Corporate Accountability",
-        associatedWith: "Freelance",
+        associatedImg: null,
+        associatedName: null,
         liveUrl: "https://corporateaccountability.org/",
         tools: ["Bootstrap", "Photoshop"],
         challenge: ["Balancing high-intensity activism imagery with dense financial reporting layouts cleanly.", "Maintaining strict contrast standards and readable structures across highly packed multi-column navigation menus"],
@@ -77,7 +80,8 @@ const PortfolioData = [
         role: "Frontend Developer",
         duration: "5 months",
         client: "Ufoelektronika",
-        associatedWith: "PT. Go Online Solusi",
+        associatedImg: Img_Associated,
+        associatedName: "Associated with PT. Go Online Solusi",
         liveUrl: "https://www.ufoelektronika.com/",
         tools: ["Opencart", "PHP", "Bootstrap", "Figma", "GSAP"],
         challenge: ["Designing complex, multi-tiered filter systems that remain easy to use on mobile screens when sorting through thousands of technical specs (e.g., filtering laptops by RAM, processor, and price simultaneously).", "Creating a clear user flow for buying online and picking up in-store without confusing customers about stock locations or pickup deadlines.", " Keeping a checkout screen simple and clean while offering massive variation in payment options (Virtual Accounts, e-wallets, credit card installments).", "Adapting dense electronic specification sheets into responsive, readable product pages that fit perfectly on narrow mobile devices."],

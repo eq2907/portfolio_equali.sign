@@ -62,12 +62,20 @@ function WorkDetail() {
                     <div className='container mx-auto'>
                         <ul className='flex items-center gap-4 mb-6'>
                             <li className='text-white uppercase text-sm glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{project.subtitle}</li>
+                            <li>
+                                {(project.associatedImg || project.associatedName) && (
+                                    <div className='rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1'>
+                                        {project.associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={project.associatedImg} alt={project.title} loading='lazy' decoding='async' />}
+                                        {project.associatedName && <span className='font-hanken font-semibold text-white uppercase text-sm self-center'>{project.associatedName}</span>}
+                                    </div>
+                                )}
+                            </li>
                         </ul>
                         <h1 className='text-white uppercase font-semibold text-4xl lg:text-5xl mb-6'>{project.title}</h1>
                         <p className='text-white font-hanken max-w-2xl font-normal text-xl leading-[1.8]'>{project.shortDescription}</p>
                     </div>
                 </div>
-                <div className='w-full h-full bg-linear-to-t from-black/70 to-transparent absolute top-0 left-0 z-9'></div>
+                <div className='w-full h-full bg-linear-to-t from-black/80 to-transparent absolute top-0 left-0 z-9'></div>
             </div>
             <div className='border-b border-[#DDD7CD]'>
                 <div className='container mx-auto'>
@@ -109,9 +117,9 @@ function WorkDetail() {
                                 <h3 className='font-hanken text-3xl font-bold mb-4'>Challenges</h3>
                                 <ul className='flex flex-col gap-2'>
                                     {(Array.isArray(project.challenge) ? project.challenge : []).map((item, index) => (
-                                        <li className='flex items-center gap-4 font-hanken text-base md:text-lg leading-[1.75] text-secondary-foreground' key={index}>
-                                            <span className='block h-1.5 w-1.5 bg-primary rounded-full'></span>
-                                            {item}
+                                        <li className='flex items-start gap-4 font-hanken text-base md:text-lg leading-[1.75] text-secondary-foreground' key={index}>
+                                            <span className='block h-1.5 w-1.5 bg-primary rounded-full mt-2.5'></span>
+                                            <p className='flex-1'>{item}</p>
                                         </li>
                                     ))}
                                 </ul>
@@ -144,7 +152,13 @@ function WorkDetail() {
                                 onClick={() => navigate(`/work/${nextProject.slug}`)}
                                 className="group w-full text-left cursor-pointer"
                             >
-                                <div className='relative overflow-hidden h-[35vh] lg:h-[50vh] 2xl:h-[35vh] bg-secondary rounded-2xl'>
+                                <div className='relative overflow-hidden h-[35vh] lg:h-[50vh] xl:h-[32vh] 2xl:h-[35vh] bg-secondary rounded-2xl'>
+                                    {(nextProject.associatedImg || nextProject.associatedName) && (
+                                        <div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-6 z-10'>
+                                            {nextProject.associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={nextProject.associatedImg} alt={nextProject.title} loading='lazy' decoding='async' />}
+                                            {nextProject.associatedName && <span className='font-hanken font-semibold text-white uppercase text-sm self-center'>{nextProject.associatedName}</span>}
+                                        </div>
+                                    )}
                                     <img
                                         src={nextProject.image}
                                         alt={nextProject.title}
