@@ -42,28 +42,32 @@ function Work() {
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-28'>
                     {filteredData.map((item, index) => (
-                        <div className='bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-[1.02] transition-all duration-300' key={index}>
-                            <figure>
-                                <Link to={`/work/${item.slug}`} className="block overflow-hidden" style={{ backgroundColor: item.heroBgColor }}>
+                        <div className='bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-[1.02] transition-all duration-300 flex flex-col h-full' key={index}>
+                            <figure className='flex flex-col h-full'>
+                                <Link to={`/work/${item.slug}`} className="block overflow-hidden shrink-0" style={{ backgroundColor: item.heroBgColor }}>
                                     <img className='w-full aspect-4/3 object-cover hover:scale-105 transition-transform duration-500 ease-out' src={item.image} alt={item.title} loading='lazy' decoding='async' />
                                 </Link>
-                                <figcaption className='mt-6 px-8 pb-4'>
-                                    <h3 className='text-[#665B53] uppercase text-xs mb-1.5'>{item.subtitle}</h3>
-                                    <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
-                                    <p className='font-hanken font-normal my-2 text-base leading-[1.8] line-clamp-3'>{item.description}</p>
-                                    <ul className='flex flex-wrap gap-2 mt-4 mb-4'>
-                                        {(Array.isArray(item.label) ? item.label : []).map((label, index) => (
-                                            <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={index}>{label}</li>
-                                        ))}
-                                    </ul>
-                                    <Link
-                                        className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5" data-block="button"
-                                        to={`/work/${item.slug}`}
-                                    >
-                                        <span className='button__flair'></span>
-                                        <span className="self-center relative z-10">View Case Study</span>
-                                        <ArrowIcon />
-                                    </Link>
+                                <figcaption className='flex-1 flex flex-col justify-between pt-6 px-8 pb-8'>
+                                    <div>
+                                        <h3 className='text-[#665B53] uppercase text-xs mb-1.5'>{item.subtitle}</h3>
+                                        <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
+                                        <p className='font-hanken font-normal my-2 text-base leading-[1.8] line-clamp-3'>{item.description}</p>
+                                        <ul className='flex flex-wrap gap-2 mt-4 mb-4'>
+                                            {(Array.isArray(item.label) ? item.label : []).map((label, index) => (
+                                                <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={index}>{label}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className='mt-auto pt-2'>
+                                        <Link
+                                            className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 font-semibold uppercase px-6 pt-2.5 pb-2.5" data-block="button"
+                                            to={`/work/${item.slug}`}
+                                        >
+                                            <span className='button__flair'></span>
+                                            <span className="self-center relative z-10">View Case Study</span>
+                                            <ArrowIcon />
+                                        </Link>
+                                    </div>
                                 </figcaption>
                             </figure>
                         </div>
