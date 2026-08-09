@@ -50,9 +50,9 @@ const siteConfig = {
 	// Each entry: { platform, href }
 	// SVG icons are matched by platform name in Footer.jsx
 	social: [
-		{ platform: 'linkedin', href: '#' },
-		{ platform: 'github', href: '#' },
-		{ platform: 'instagram', href: '#' },
+		{ platform: 'linkedin', href: 'https://www.linkedin.com/in/eki-susanto-a9914291' },
+		{ platform: 'github', href: 'https://github.com/eq2907' },
+		{ platform: 'instagram', href: 'https://www.instagram.com/eki.susanto/' },
 	],
 };
 

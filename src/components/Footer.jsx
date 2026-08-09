@@ -34,14 +34,14 @@ const SocialIcon = ({ platform }) => {
 
 // ── Scroll-to-top button ───────────────────────────────────────────────────
 const ScrollUpButton = () => (
-	<div className='w-14 h-14 mt-10 ml-auto mr-0 border border-white rounded-full flex justify-center'>
+	<div className='w-14 h-14 mt-10 ml-auto mr-0 border border-white rounded-full flex justify-center hover:bg-white/20 transition-colors duration-300'>
 		<button
 			type='button'
-			className='self-center cursor-pointer'
+			className='w-14 h-14 self-center cursor-pointer block'
 			onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 			aria-label='Scroll to top'
 		>
-			<svg width='20' height='20' viewBox='0 0 20 23' fill='none' xmlns='http://www.w3.org/2000/svg'>
+			<svg className='mx-auto' width='20' height='20' viewBox='0 0 20 23' fill='none' xmlns='http://www.w3.org/2000/svg'>
 				<path d='M10 21.5714V1M1 10L10 1L19 10' stroke='white' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
 			</svg>
 		</button>
@@ -67,7 +67,7 @@ function Footer() {
 						<ul className='flex gap-3 mt-6 [&_a]:border [&_a]:border-white [&_a]:rounded-full [&_a]:px-4 [&_a]:py-4'>
 							{social.map(({ platform, href }) => (
 								<li key={platform}>
-									<a className='inline-flex justify-center' href={href} aria-label={platform} target='_blank' rel='noopener noreferrer'>
+									<a className='inline-flex justify-center hover:bg-white/20 transition-colors duration-300' href={href} aria-label={platform} target='_blank' rel='noopener noreferrer'>
 										<SocialIcon platform={platform} />
 									</a>
 								</li>
