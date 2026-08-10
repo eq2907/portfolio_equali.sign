@@ -2,9 +2,6 @@ import { useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import siteConfig from '../utils/siteConfig';
 import gsap from 'gsap';
-// import '../plugins/MorphSVGPlugin.min';
-// const MorphSVGPlugin = window.MorphSVGPlugin;
-
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 
 gsap.registerPlugin(MorphSVGPlugin);
@@ -173,7 +170,7 @@ function Nav({ handleScroll }) {
 					});
 
 					closeTl.to(morphPath, { morphSVG: { shape: closedPath }, duration: 1.0, ease: "elastic.out(1, 0.6)" }, 0);
-					closeTl.to(offcanvas, { xPercent: 100, duration: 0.8, ease: "power2.inOut" }, 0.06);
+					closeTl.to(offcanvas, { xPercent: 100, duration: 0.4, ease: "power2.inOut" }, 0.06);
 					closeTl.to(overlay, { opacity: 0, duration: 0.5, ease: "power2.in" }, 0);
 				}
 			});
