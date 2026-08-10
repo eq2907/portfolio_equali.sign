@@ -174,10 +174,13 @@ function WorkDetail() {
                                                     </ul>
                                                     <h2 className='text-white uppercase font-semibold text-xl lg:text-2xl leading-[1.4]'>{nextProject.title}</h2>
                                                 </div>
-                                                <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300 shrink-0 ml-4">
-                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                                    </svg>
+                                                <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center shrink-0 ml-4 relative overflow-hidden text-white group-hover:text-[#181009] transition-colors duration-300">
+                                                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-white rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></span>
+                                                    <span className="relative z-10 flex items-center justify-center">
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                        </svg>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
