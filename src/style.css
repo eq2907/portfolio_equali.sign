@@ -13,6 +13,10 @@
 }
 
 @layer components {
+	.container {
+		@apply px-4;
+	}
+
 	.glass {
 		@apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0px_4px_0px_0px_rgba(0,0,0,0.02)];
 	}
@@ -95,6 +99,34 @@
 				@apply text-secondary-foreground;
 			}
 		}
+	}
+
+	.offcanvas {
+		@apply bg-amber-500 fixed top-0 right-0 w-[70vw] h-screen z-1050;
+	}
+
+	.svg-wrap {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: calc(280px + 80px);
+		pointer-events: none;
+		display: flex;
+		align-items: stretch;
+	}
+
+	.panel {
+		position: relative;
+		overflow: hidden;
+	}
+	.overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(2, 6, 23, 0.8);
+		opacity: 0;
+		pointer-events: none;
+		z-index: 1020;
 	}
 }
 

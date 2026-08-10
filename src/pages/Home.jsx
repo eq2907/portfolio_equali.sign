@@ -42,23 +42,23 @@ function Home() {
 						/>
 					</figure>
 					<div className='hero__description text-center mt-16'>
-						<h1 className='text-6xl font-semibold'>
-							<span className='font-hanken uppercase block'>{title}</span>
-							<span className='block font-bodoni italic my-2.5'>
+						<h1 className='text-5xl lg:text-6xl font-semibold'>
+							<span className='font-hanken uppercase block leading-[1.2]'>{title}</span>
+							<span className='block font-bodoni italic lg:my-2.5 leading-[1.2]'>
 								{introHeadingBefore && introHeadingBefore.trim()}{' '}
 								<span className='text-primary'>{taglineAccent}</span>{' '}
 								{introHeadingAfter && introHeadingAfter.trim()}
 							</span>
-							<span className='font-hanken uppercase block mt-6'>people love.</span>
+							<span className='font-hanken uppercase block mt-4 lg:mt-6'>people love.</span>
 						</h1>
-						<p className='font-hanken max-w-120 font-normal mx-auto mt-8 text-xl leading-[1.8]'>
+						<p className='font-hanken max-w-120 font-normal mx-auto mt-8 text-lg lg:text-xl leading-[1.8]'>
 							{bio}
 						</p>
 					</div>
 					<div className='scorll-to-explore font-hanken mt-8'>
 						<span className='bg-secondary-foreground w-0.5 h-16 block mx-auto'></span>
-						<span className='block text-[#6B6B6B] font-normal mt-5 text-center text-sm uppercase'>Scroll to explore</span>
-						<span className='block text-secondary-foreground mt-1 text-center font-semibold text-xl uppercase'>Selected Work</span>
+						<span className='block text-[#6B6B6B] font-normal mt-5 text-center text-xs lg:text-sm uppercase'>Scroll to explore</span>
+						<span className='block text-secondary-foreground mt-1 text-center font-semibold text-lg lg:text-xl uppercase'>Selected Work</span>
 					</div>
 				</div>
 			</div>
@@ -69,10 +69,10 @@ function Home() {
 			</section>
 
 			{/* ── Short intro ───────────────────────────────────── */}
-			<section className='short-intro-wrapper py-24 border-y border-y-[#DDD7CD]' id='about'>
+			<section className='short-intro-wrapper py-12 lg:py-24 border-y border-y-[#DDD7CD]' id='about'>
 				<div className='container mx-auto' id='contact'>
 					<div className='grid grid-cols-12 gap-6'>
-						<div className='col-span-8'>
+						<div className='col-span-12 lg:col-span-8 order-2'>
 							<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Short intro</h3>
 							<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.3] mb-3.5'>
 								Crafting clean code,{' '}
@@ -81,7 +81,7 @@ function Home() {
 								</span>{' '}
 								that stand the test of time.
 							</h2>
-							<p className='font-hanken font-normal text-xl leading-[1.8] mb-6'>{introBio}</p>
+							<p className='font-hanken font-normal text-lg lg:text-xl leading-[1.8] mb-6'>{introBio}</p>
 							<a
 								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5'
 								href={resumeUrl}
@@ -94,8 +94,8 @@ function Home() {
 								<ArrowIcon />
 							</a>
 						</div>
-						<div className='col-span-4 self-center'>
-							<figure className='w-75 mx-auto'>
+						<div className='col-span-12 lg:col-span-4 self-center lg:order-2'>
+							<figure className='w-75 mx-auto mb-4'>
 								<img
 									className='rounded-full'
 									src={profilePhoto}

@@ -1,7 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import siteConfig from '../utils/siteConfig';
 import gsap from 'gsap';
+// import '../plugins/MorphSVGPlugin.min';
+// const MorphSVGPlugin = window.MorphSVGPlugin;
+
+import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
+
+gsap.registerPlugin(MorphSVGPlugin);
 
 const AnimatedLink = ({ item, onClick }) => {
 	const location = useLocation();
@@ -9,6 +15,8 @@ const AnimatedLink = ({ item, onClick }) => {
 
 	const text1Ref = useRef(null);
 	const text2Ref = useRef(null);
+
+
 
 	const handleMouseEnter = () => {
 		gsap.to(text1Ref.current, {
@@ -43,7 +51,7 @@ const AnimatedLink = ({ item, onClick }) => {
 	return (
 		<Link
 			to={item.to}
-			className={`relative block overflow-hidden hover:font-semibold transition-all duration-300 ${isActive ? 'active font-semibold' : ''}`}
+			className={`relative hidden lg:block overflow-hidden hover:font-semibold transition-all duration-300 ${isActive ? 'active font-semibold' : ''}`}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onClick={onClick}
@@ -58,29 +66,205 @@ const AnimatedLink = ({ item, onClick }) => {
 function Nav({ handleScroll }) {
 	const { nameParts, nav, navCta } = siteConfig;
 
+	useEffect(() => {
+		// Elements
+		const openBtn = document.getElementById('openBtn');
+		const closeBtn = document.getElementById('closeBtn');
+		const offcanvas = document.getElementById('offcanvas');
+		const overlay = document.getElementById('overlay');
+		const morphPath = document.getElementById('morphPath');
+		const svgWrap = document.querySelector('.svg-wrap');
+
+		if (!openBtn || !closeBtn || !offcanvas || !overlay || !morphPath || !svgWrap) return;
+
+		// Paths: closed (initial) and open (morphed) shapes
+		// initialPath is the current d attribute; openPath is the target shape when menu opens
+		const closedPath = "M 400 0 L 400 1000 L 120 1000 C 400 702 400 243 120 0 Z";
+		const openPath = "M 400 0 L 400 1000 L 0 1000 C 0 800 0 192 0 0 Z";
+
+		// Set initial state
+		gsap.set(offcanvas, { xPercent: 100 });
+		gsap.set(morphPath, { attr: { d: closedPath } });
+
+		// Animation timeline for open/close
+		const tl = gsap.timeline({ paused: true, defaults: { duration: 0.9, ease: "elastic.out(1, 0.6)" } });
+
+		// Step 1: enable pointer events and slide panel in (translateX)
+		tl.to(offcanvas, {
+			pointerEvents: "auto",
+			xPercent: 0,
+			duration: 0.7,
+			ease: "power3.out"
+		}, 0);
+
+		// Step 2: fade overlay in
+		tl.to(overlay, { opacity: 1, pointerEvents: "auto", duration: 0.45, ease: "power2.out" }, 0);
+
+		// Step 3: morph the SVG path with elastic easing (slightly delayed to feel springy)
+		tl.to(morphPath, {
+			morphSVG: { shape: openPath },
+			duration: 1.5,
+			ease: "elastic.out(1, 1)"
+		}, 0.08);
+
+		// Optional: small bounce on panel content for extra polish
+		tl.fromTo(".panel", { y: 0, opacity: 1 }, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 0.12);
+
+		// Reverse timeline for closing (we'll playReverse)
+		function openMenu() {
+			offcanvas.setAttribute('aria-hidden', 'false');
+			overlay.setAttribute('aria-hidden', 'false');
+			svgWrap.setAttribute('aria-hidden', 'false');
+			tl.play(0);
+
+			// Animate header elements
+			gsap.to('.menu__panel', {
+				y: 0,
+				opacity: 1,
+				duration: 0.4,
+				ease: 'power2.in',
+				delay: 0.1  // Start after the menu has started opening
+			});
+
+			// Animate menu items with a small delay after header
+			gsap.to('.menu-list li', {
+				x: 0,
+				opacity: 1,
+				duration: 0.3,
+				stagger: 0.1,
+				ease: 'power2.in',
+				delay: 0.4  // Start after the header animation
+			});
+		}
+
+		function closeMenu() {
+			// Animate header out
+			gsap.to('.menu__panel', {
+				y: -20,
+				opacity: 0,
+				duration: 0.3,
+				ease: 'power2.in',
+				delay: 0.1  // Slight delay after menu items start animating out
+			});
+
+			// Animate menu items out in reverse order
+			gsap.to('.menu-list li', {
+				x: -20,
+				opacity: 0,
+				duration: 0.3,
+				stagger: {
+					each: 0.08,
+					from: 'end',  // Start from the last item
+					ease: 'power2.in'
+				},
+				onComplete: function () {
+					// After menu items are hidden, start closing the menu
+					const closeTl = gsap.timeline({
+						defaults: { duration: 0.6, ease: "power3.inOut" },
+						onComplete: () => {
+							offcanvas.setAttribute('aria-hidden', 'true');
+							overlay.setAttribute('aria-hidden', 'true');
+							svgWrap.setAttribute('aria-hidden', 'true');
+							offcanvas.style.pointerEvents = 'none';
+							overlay.style.pointerEvents = 'none';
+						}
+					});
+
+					closeTl.to(morphPath, { morphSVG: { shape: closedPath }, duration: 0.7, ease: "power2.inOut" }, 0);
+					closeTl.to(offcanvas, { xPercent: 0, duration: 0.6, ease: "power3.in" }, 0.06);
+					closeTl.to(overlay, { opacity: 0, duration: 0.45, ease: "power2.in" }, 0);
+				}
+			});
+		}
+
+		// Event listeners
+		openBtn.addEventListener('click', openMenu);
+		closeBtn.addEventListener('click', closeMenu);
+		overlay.addEventListener('click', closeMenu);
+
+		// Keyboard accessibility: close on Escape
+		const handleKeyDown = (e) => {
+			if (e.key === 'Escape') {
+				// if menu is open (aria-hidden false), close it
+				if (offcanvas.getAttribute('aria-hidden') === 'false') closeMenu();
+			}
+		};
+		document.addEventListener('keydown', handleKeyDown);
+
+		return () => {
+			openBtn.removeEventListener('click', openMenu);
+			closeBtn.removeEventListener('click', closeMenu);
+			overlay.removeEventListener('click', closeMenu);
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, []);
+
 	return (
-		<header className='w-full fixed left-0 top-6 z-1030'>
-			<div className='container mx-auto'>
-				<div className='glass font-hanken py-3 px-8 rounded-full'>
-					<div className='flex justify-between'>
-						<Link className='font-medium text-xl self-center' to='/'>
-							{nameParts.before}
-							<span className='text-primary'>{nameParts.accent}</span>
-							{nameParts.after}
-						</Link>
-						<nav className='flex gap-x-6 [&_a]:uppercase [&_a]:text-base [&_a]:self-center'>
-							{nav.map((item) => (
-								<AnimatedLink key={item.label} item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
-							))}
-							<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2' onClick={() => handleScroll('contact')} data-block="button">
-								<span className='button__flair'></span>
-								<span className="self-center relative z-10">{navCta.label}</span>
+		<>
+			<header className='w-full fixed left-0 top-6 z-1020'>
+				<div className='container mx-auto'>
+					<div className='glass font-hanken py-3 px-8 rounded-full'>
+						<div className='flex justify-between'>
+							<Link className='font-medium text-xl self-center' to='/'>
+								{nameParts.before}
+								<span className='text-primary'>{nameParts.accent}</span>
+								{nameParts.after}
 							</Link>
-						</nav>
+							<nav className='flex gap-x-6 [&_a]:uppercase [&_a]:text-base [&_a]:self-center'>
+								{nav.map((item) => (
+									<AnimatedLink key={item.label} item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
+								))}
+								<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2 hidden lg:block' onClick={() => handleScroll('contact')} data-block="button">
+									<span className='button__flair'></span>
+									<span className="self-center relative z-10">{navCta.label}</span>
+								</Link>
+								<button id='openBtn' className='block lg:hidden' type='button' aria-label="Open menu">
+									<svg className='size-8' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path className='stroke-secondary-foreground' d="M4 17H20M4 12H20M4 7H20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+									</svg>
+								</button>
+							</nav>
+						</div>
 					</div>
 				</div>
+			</header>
+			<div id='offcanvas' className='offcanvas' aria-hidden='true' role='dialog' aria-label='Main menu mobile'>
+				<div className='svg-wrap' aria-hidden='true'>
+					<svg id='morphSvg' viewBox="0 0 400 1000" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"
+						xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<defs>
+							<linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+								<stop offset="0" stopColor="#fe9a00" />
+								<stop offset="1" stopColor="#fe9a00" />
+							</linearGradient>
+						</defs>
+
+						<path id="morphPath" fill="url(#g1)" d="M400,0 L400,1000 L0,1000 C40,800 40,200 0,0 Z"></path>
+					</svg>
+				</div>
+
+				<div className='panel'>
+					<div className='menu__panel'>
+						<div className='flex justify-between text-white'>
+							<div className='panel__logo'>
+								logo
+							</div>
+							<button id='closeBtn' aria-label='Close menu'>
+								Close
+							</button>
+						</div>
+					</div>
+					<ul className='menu-list'>
+						<li>Home</li>
+						<li>About</li>
+						<li>Services</li>
+						<li>Portfolio</li>
+						<li>Contact</li>
+					</ul>
+				</div>
 			</div>
-		</header>
+			<div id='overlay' className='overlay' aria-hidden='true'></div>
+		</>
 	);
 }
 

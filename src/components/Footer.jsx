@@ -60,11 +60,11 @@ function Footer() {
 
 	return (
 		<footer className='bg-[#181009]'>
-			<div className='container mx-auto py-20 relative'>
+			<div className='container mx-auto py-10 lg:py-20 relative'>
 				<div className='grid grid-cols-12 gap-4'>
 
 					{/* Left column — heading + socials */}
-					<div className='col-span-6'>
+					<div className='col-span-12 lg:col-span-6'>
 						<h3 className='text-white font-hanken font-semibold uppercase text-sm pb-3'>Get in touch</h3>
 						<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.4] mb-3.5'>
 							<span className='text-white'>{footerHeading}</span>
@@ -83,8 +83,8 @@ function Footer() {
 					</div>
 
 					{/* Right column — links + scroll-up */}
-					<div className='col-span-6 self-end'>
-						<ul className='text-right [&_a]:text-white [&_a]:font-hanken [&_a]:font-normal [&_a]:text-xl [&_a]:uppercase flex flex-col gap-2'>
+					<div className='col-span-12 lg:col-span-6 lg:self-end'>
+						<ul className='lg:text-right [&_a]:text-white [&_a]:font-hanken [&_a]:font-normal [&_a]:text-xl [&_a]:uppercase flex flex-col gap-2 mt-12 lg:mt-0'>
 							{footerLinks.map(({ label, href }) => {
 								const isActive = href.startsWith('/') ? (location.pathname === href || (href !== '/' && location.pathname.startsWith(href))) : false;
 								return (

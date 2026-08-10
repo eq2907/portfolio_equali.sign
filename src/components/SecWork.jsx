@@ -40,8 +40,8 @@ function Portfolio({ title, subtitle, shortDescription, image, associatedImg, as
 						</div>
 					)}
 					<img className='w-full h-full object-cover' src={image} alt={title} loading='lazy' decoding='async' />
-					<div className='absolute bottom-8 right-8'>
-						<ul className='flex gap-3'>
+					<div className='absolute bottom-8 left-4 lg:right-8 lg:left-auto'>
+						<ul className='flex flex-wrap gap-3'>
 							{(Array.isArray(label) ? label : []).map((item, index) => (
 								<li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-4 py-1 text-sm' key={index}>{item}</li>
 							))}
