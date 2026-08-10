@@ -270,11 +270,17 @@ function Nav({ handleScroll }) {
 					<ul className='menu-list flex flex-col gap-y-4 [&_a]:uppercase [&_a]:text-base'>
 						{nav.map((item) => (
 							<li key={item.label}>
-								<AnimatedLink item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
+								<AnimatedLink item={item} onClick={() => {
+									handleScroll(item.label.toLowerCase());
+									document.getElementById('closeBtn')?.click();
+								}} />
 							</li>
 						))}
 						<li>
-							<Link to={navCta.to} className='w-full btn-outline button-effect button--stroke px-6 py-2 text-center block' onClick={() => handleScroll('contact')} data-block="button">
+							<Link to={navCta.to} className='w-full btn-outline button-effect button--stroke px-6 py-2 text-center block' onClick={() => {
+								handleScroll('contact');
+								document.getElementById('closeBtn')?.click();
+							}} data-block="button">
 								<span className='button__flair'></span>
 								<span className="self-center relative z-10">{navCta.label}</span>
 							</Link>
