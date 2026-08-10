@@ -85,6 +85,8 @@ function Nav({ handleScroll }) {
 		// Set initial state
 		gsap.set(offcanvas, { xPercent: 100 });
 		gsap.set(morphPath, { attr: { d: closedPath } });
+		gsap.set('.menu__panel', { y: -20, opacity: 0 });
+		gsap.set('.menu-list li', { x: -20, opacity: 0 });
 
 		// Animation timeline for open/close
 		const tl = gsap.timeline({ paused: true, defaults: { duration: 0.9, ease: "elastic.out(1, 0.6)" } });
@@ -122,17 +124,17 @@ function Nav({ handleScroll }) {
 				y: 0,
 				opacity: 1,
 				duration: 0.4,
-				ease: 'power2.in',
-				delay: 0.1  // Start after the menu has started opening
+				ease: 'power2.out',
+				delay: 0.3  // Start after the menu has started opening
 			});
 
 			// Animate menu items with a small delay after header
 			gsap.to('.menu-list li', {
 				x: 0,
 				opacity: 1,
-				duration: 0.3,
+				duration: 0.4,
 				stagger: 0.1,
-				ease: 'power2.in',
+				ease: 'power2.out',
 				delay: 0.4  // Start after the header animation
 			});
 		}
@@ -170,9 +172,9 @@ function Nav({ handleScroll }) {
 						}
 					});
 
-					closeTl.to(morphPath, { morphSVG: { shape: closedPath }, duration: 0.7, ease: "power2.inOut" }, 0);
-					closeTl.to(offcanvas, { xPercent: 0, duration: 0.6, ease: "power3.in" }, 0.06);
-					closeTl.to(overlay, { opacity: 0, duration: 0.45, ease: "power2.in" }, 0);
+					closeTl.to(morphPath, { morphSVG: { shape: closedPath }, duration: 1.0, ease: "elastic.out(1, 0.6)" }, 0);
+					closeTl.to(offcanvas, { xPercent: 100, duration: 0.8, ease: "power2.inOut" }, 0.06);
+					closeTl.to(overlay, { opacity: 0, duration: 0.5, ease: "power2.in" }, 0);
 				}
 			});
 		}
