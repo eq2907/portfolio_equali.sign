@@ -51,14 +51,14 @@ const AnimatedLink = ({ item, onClick }) => {
 	return (
 		<Link
 			to={item.to}
-			className={`relative hidden lg:block overflow-hidden hover:font-semibold transition-all duration-300 ${isActive ? 'active font-semibold' : ''}`}
+			className={`relative overflow-hidden hover:font-semibold transition-all duration-300 ${isActive ? 'active font-semibold' : ''}`}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onClick={onClick}
 			style={{ perspective: '1000px' }}
 		>
-			<span ref={text1Ref} className="block" style={{ transformOrigin: '50% 100%' }}>{item.label}</span>
-			<span ref={text2Ref} className="block absolute top-full left-0 w-full text-center" style={{ transformOrigin: '50% 0%', transform: 'rotateX(-90deg)' }}>{item.label}</span>
+			<span ref={text1Ref} className='block' style={{ transformOrigin: '50% 100%' }}>{item.label}</span>
+			<span ref={text2Ref} className='block absolute top-full left-0 w-full' style={{ transformOrigin: '50% 0%', transform: 'rotateX(-90deg)' }}>{item.label}</span>
 		</Link>
 	);
 };
@@ -213,13 +213,15 @@ function Nav({ handleScroll }) {
 								{nameParts.after}
 							</Link>
 							<nav className='flex gap-x-6 [&_a]:uppercase [&_a]:text-base [&_a]:self-center'>
-								{nav.map((item) => (
-									<AnimatedLink key={item.label} item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
-								))}
-								<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2 hidden lg:block' onClick={() => handleScroll('contact')} data-block="button">
-									<span className='button__flair'></span>
-									<span className="self-center relative z-10">{navCta.label}</span>
-								</Link>
+								<div className='hidden lg:flex lg:gap-x-6 [&_a]:uppercase [&_a]:text-base [&_a]:self-center'>
+									{nav.map((item) => (
+										<AnimatedLink key={item.label} item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
+									))}
+									<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2 hidden lg:block' onClick={() => handleScroll('contact')} data-block="button">
+										<span className='button__flair'></span>
+										<span className="self-center relative z-10">{navCta.label}</span>
+									</Link>
+								</div>
 								<button id='openBtn' className='block lg:hidden' type='button' aria-label="Open menu">
 									<svg className='size-8' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path className='stroke-secondary-foreground' d="M4 17H20M4 12H20M4 7H20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -236,8 +238,8 @@ function Nav({ handleScroll }) {
 						xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 						<defs>
 							<linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-								<stop offset="0" stopColor="#fe9a00" />
-								<stop offset="1" stopColor="#fe9a00" />
+								<stop offset="0" stopColor="#f8f5ec" />
+								<stop offset="1" stopColor="#f8f5ec" />
 							</linearGradient>
 						</defs>
 
@@ -247,21 +249,39 @@ function Nav({ handleScroll }) {
 
 				<div className='panel'>
 					<div className='menu__panel'>
-						<div className='flex justify-between text-white'>
+						<div className='flex justify-between mb-6'>
 							<div className='panel__logo'>
-								logo
+								<Link className='font-medium text-xl self-center' to='/'>
+									{nameParts.before}
+									<span className='text-primary'>{nameParts.accent}</span>
+									{nameParts.after}
+								</Link>
 							</div>
-							<button id='closeBtn' aria-label='Close menu'>
-								Close
+							<button id='closeBtn' className='self-center' aria-label='Close menu'>
+								<svg className='size-8' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+									<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+									<g id="SVGRepo_iconCarrier">
+										<rect width="24" height="24" fill="none"></rect>
+										<path d="M7 17L16.8995 7.10051" stroke="#333" strokeLinecap="round" strokeLinejoin="round"></path>
+										<path d="M7 7.00001L16.8995 16.8995" stroke="#333" strokeLinecap="round" strokeLinejoin="round"></path>
+									</g>
+								</svg>
 							</button>
 						</div>
 					</div>
-					<ul className='menu-list'>
-						<li>Home</li>
-						<li>About</li>
-						<li>Services</li>
-						<li>Portfolio</li>
-						<li>Contact</li>
+					<ul className='menu-list flex flex-col gap-y-4 [&_a]:uppercase [&_a]:text-base'>
+						{nav.map((item) => (
+							<li key={item.label}>
+								<AnimatedLink item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
+							</li>
+						))}
+						<li>
+							<Link to={navCta.to} className='w-full btn-outline button-effect button--stroke px-6 py-2 text-center block' onClick={() => handleScroll('contact')} data-block="button">
+								<span className='button__flair'></span>
+								<span className="self-center relative z-10">{navCta.label}</span>
+							</Link>
+						</li>
 					</ul>
 				</div>
 			</div>

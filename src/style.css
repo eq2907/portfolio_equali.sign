@@ -102,31 +102,18 @@
 	}
 
 	.offcanvas {
-		@apply bg-amber-500 fixed top-0 right-0 w-[70vw] h-screen z-1050;
+		@apply w-70 max-w-[90vw] fixed top-0 right-0 h-screen z-1050;
 	}
 
 	.svg-wrap {
-		position: absolute;
-		left: 0;
-		top: 0;
-		height: 100%;
-		width: calc(280px + 80px);
-		pointer-events: none;
-		display: flex;
-		align-items: stretch;
+		@apply absolute h-full w-90 pointer-events-none flex items-stretch left-0 top-0;
 	}
 
 	.panel {
-		position: relative;
-		overflow: hidden;
+		@apply px-6 py-5 relative overflow-hidden;
 	}
 	.overlay {
-		position: fixed;
-		inset: 0;
-		background: rgba(2, 6, 23, 0.8);
-		opacity: 0;
-		pointer-events: none;
-		z-index: 1020;
+		@apply fixed inset-0 bg-[rgba(2,6,23,0.8)] opacity-0 pointer-events-none z-1020;
 	}
 }
 
