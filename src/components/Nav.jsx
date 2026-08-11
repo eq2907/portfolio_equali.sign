@@ -3,8 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import siteConfig from '../utils/siteConfig';
 import gsap from 'gsap';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(MorphSVGPlugin);
+gsap.registerPlugin(MorphSVGPlugin, ScrollTrigger);
 
 const AnimatedLink = ({ item, onClick }) => {
 	const location = useLocation();
@@ -198,9 +199,34 @@ function Nav({ handleScroll }) {
 		};
 	}, []);
 
+	const headerRef = useRef(null);
+
+	useEffect(() => {
+		if (headerRef.current) {
+			const showAnim = gsap.from(headerRef.current, {
+				yPercent: -150,
+				paused: true,
+				duration: 0.3,
+				ease: 'power2.out'
+			}).progress(1);
+
+			ScrollTrigger.create({
+				start: 'top top',
+				end: 'max',
+				onUpdate: (self) => {
+					if (self.direction === 1) {
+						showAnim.reverse();
+					} else {
+						showAnim.play();
+					}
+				}
+			});
+		}
+	}, []);
+
 	return (
 		<>
-			<header className='w-full fixed left-0 top-6 z-1020'>
+			<header ref={headerRef} className='w-full fixed left-0 top-6 z-1020'>
 				<div className='container mx-auto'>
 					<div className='glass font-hanken py-3 px-8 rounded-full'>
 						<div className='flex justify-between'>
