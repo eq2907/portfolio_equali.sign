@@ -71,7 +71,7 @@ function Work() {
     }, [displayedData]);
 
     return (
-        <div className='pt-40 pb-14' id='work'>
+        <div className='pt-40 pb-8 lg:pb-14' id='work'>
             <div className='container mx-auto'>
                 <h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Discover work</h3>
                 <h1 className='text-5xl lg:text-6xl leading-[1.2]'>
@@ -92,15 +92,15 @@ function Work() {
                         ))}
                     </ul>
                 </div>
-                <div ref={gridRef} className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-28'>
+                <div ref={gridRef} className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 lg:mb-28'>
                     {displayedData.map((item, index) => (
                         <div className='portfolio-card bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col h-full' key={item.slug ?? index}>
                             <figure className='flex flex-col h-full relative group'>
                                 <Link to={`/work/${item.slug}`} className="block overflow-hidden shrink-0 relative" style={{ backgroundColor: item.heroBgColor }}>
                                     {(item.associatedImg || item.associatedName) && (
-                                        <div className='glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 absolute top-8 left-6 z-10'>
+                                        <div className='glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 absolute top-4 lg:top-8 left-3 lg:left-6 z-10'>
                                             {item.associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={item.associatedImg} alt={item.title} loading='lazy' decoding='async' />}
-                                            {item.associatedName && <span className='font-hanken font-semibold text-secondary-foreground uppercase text-sm self-center'>{item.associatedName}</span>}
+                                            {item.associatedName && <span className='font-hanken font-semibold text-secondary-foreground uppercase text-xs lg:text-sm self-center'>{item.associatedName}</span>}
                                         </div>
                                     )}
                                     <img className='w-full aspect-4/3 object-cover group-hover:scale-105 transition-all duration-300' src={item.image} alt={item.title} loading='lazy' decoding='async' />

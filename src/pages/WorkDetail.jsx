@@ -200,9 +200,9 @@ function WorkDetail() {
                                 >
                                     <div className='relative overflow-hidden bg-secondary rounded-2xl'>
                                         {(nextProject.associatedImg || nextProject.associatedName) && (
-                                            <div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-3 lg:left-6 z-10'>
+                                            <div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-4 lg:top-8 left-3 lg:left-6 z-10'>
                                                 {nextProject.associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={nextProject.associatedImg} alt={nextProject.title} loading='lazy' decoding='async' />}
-                                                {nextProject.associatedName && <span className='font-hanken font-semibold text-white uppercase text-xs lg:text-sm self-center'>{nextProject.associatedName}</span>}
+                                                {nextProject.associatedName && <span className='font-hanken font-semibold text-secondary-foreground uppercase text-xs lg:text-sm self-center'>{nextProject.associatedName}</span>}
                                             </div>
                                         )}
                                         <img

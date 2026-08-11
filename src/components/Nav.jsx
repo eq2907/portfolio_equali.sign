@@ -226,7 +226,7 @@ function Nav({ handleScroll }) {
 
 	return (
 		<>
-			<header ref={headerRef} className='w-full fixed left-0 top-6 z-1020'>
+			<header ref={headerRef} className='w-full fixed left-0 top-3 lg:top-6 z-1020'>
 				<div className='container mx-auto'>
 					<div className='glass font-hanken py-3 px-8 rounded-full'>
 						<div className='flex justify-between'>
