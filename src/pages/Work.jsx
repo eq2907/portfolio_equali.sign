@@ -32,7 +32,7 @@ function Work() {
                         {categories.map((category, index) => (
                             <li
                                 key={index}
-                                className={activeCategory === category ? 'active' : ''}
+                                className={activeCategory === category ? 'font-semibold active' : ''}
                                 onClick={() => setActiveCategory(category)}
                             >
                                 {category}

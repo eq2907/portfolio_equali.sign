@@ -3,6 +3,9 @@ import { useRef, useEffect } from 'react';
 import { PortfolioData } from '../utils/PortfolioData';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 // ── Arrow icon shared by buttons ──────────────────────────────────────────
 export const ArrowIcon = () => {
@@ -23,6 +26,7 @@ function WorkDetail() {
     // Refs for animations
     const heroRef = useRef(null);
     const heroImgRef = useRef(null);
+    const swiperRef = useRef(null);
 
     useEffect(() => {
         if (!project) return;
@@ -50,7 +54,7 @@ function WorkDetail() {
         return <div>Project not found</div>;
     }
 
-    const nextProjects = PortfolioData.filter((p) => p.slug !== slug).slice(0, 3);
+    const nextProjects = PortfolioData.filter((p) => p.slug !== slug);
 
     return (
         <div className='work-detail'>
@@ -60,7 +64,7 @@ function WorkDetail() {
                 </figure>
                 <div className='absolute bottom-42 left-0 w-full z-10'>
                     <div className='container mx-auto'>
-                        <ul className='flex items-center gap-4 mb-6'>
+                        <ul className='lg:flex lg:flex-row lg:items-center lg:gap-4 mb-6 [&_li]:mb-4 [&_li]:last:mb-0 [&_li]:lg:mb-0'>
                             <li className='text-white uppercase text-sm glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{project.subtitle}</li>
                             <li>
                                 {(project.associatedImg || project.associatedName) && (
@@ -72,13 +76,13 @@ function WorkDetail() {
                             </li>
                         </ul>
                         <h1 className='text-white uppercase font-semibold text-4xl lg:text-5xl mb-6'>{project.title}</h1>
-                        <p className='text-white font-hanken max-w-2xl font-normal text-xl leading-[1.8]'>{project.shortDescription}</p>
+                        <p className='text-white font-hanken max-w-2xl font-normal text-lg lg:text-xl leading-[1.8]'>{project.shortDescription}</p>
                     </div>
                 </div>
                 <div className='w-full h-full bg-linear-to-t from-black/80 to-transparent absolute top-0 left-0 z-9'></div>
             </div>
             <div className='border-b border-[#DDD7CD]'>
-                <div className='container mx-auto'>
+                <div className="lg:container lg:mx-auto">
                     <ul className="grid grid-cols-2 md:grid-cols-5 gap-px">
                         {[
                             { label: 'Client', value: project.client },
@@ -87,7 +91,7 @@ function WorkDetail() {
                             { label: 'Duration', value: project.duration },
                             { label: 'Category', value: project.subtitle },
                         ].map((item) => (
-                            <li key={item.label} className="py-6 px-6 relative after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-[#DDD7CD] last:after:hidden">
+                            <li key={item.label} className="py-6 px-6 relative after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-[#DDD7CD] last:after:hidden before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#DDD7CD] lg:before:hidden last:before:hidden">
                                 <div className='flex flex-col justify-center h-full'>
                                     <p className="font-hanken text-xs uppercase text-[#665B53] font-semibold mb-1">{item.label}</p>
                                     <p className="font-hanken text-base font-medium text-secondary-foreground leading-relaxed">{item.value}</p>
@@ -96,12 +100,11 @@ function WorkDetail() {
                         ))}
                     </ul>
                 </div>
-
             </div>
             <div className='mt-12 mb-12'>
                 <div className='container pb-12 mx-auto border-b border-[#DDD7CD]'>
                     <div className='grid grid-cols-12 gap-6'>
-                        <div className='col-span-8 [&>div:first-child]:mb-10'>
+                        <div className='col-span-12 lg:col-span-8 [&>div:first-child]:mb-10'>
                             <div>
                                 <h3 className='font-hanken text-3xl font-bold mb-4'>Overview</h3>
                                 <p className="font-hanken text-base md:text-lg leading-[1.75] text-secondary-foreground">
@@ -125,7 +128,7 @@ function WorkDetail() {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col-span-4'>
+                        <div className='col-span-12 lg:col-span-4'>
                             <h3 className='font-hanken text-3xl font-bold mb-5'>Tools</h3>
                             <ul className="flex flex-wrap gap-2">
                                 {project.tools.map((tool) => (
@@ -142,19 +145,96 @@ function WorkDetail() {
                 </div>
             </div>
             <div className='work__other mb-24'>
+                <div className='container mx-auto flex items-center justify-between mb-10'>
+                    <h3 className='font-hanken text-3xl font-bold'>Other Projects</h3>
+                    {/* External navigation buttons */}
+                    <div className='flex items-center gap-3'>
+                        <button
+                            type='button'
+                            onClick={() => swiperRef.current?.slidePrev()}
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center hover:bg-secondary-foreground hover:border-secondary-foreground hover:text-white transition-all duration-300 group'
+                        >
+                            <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M13 7H1M1 7L7 1M1 7L7 13' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+                            </svg>
+                        </button>
+                        <button
+                            type='button'
+                            onClick={() => swiperRef.current?.slideNext()}
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center hover:bg-secondary-foreground hover:border-secondary-foreground hover:text-white transition-all duration-300 group'
+                        >
+                            <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M1 7H13M13 7L7 1M13 7L7 13' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
                 <div className='container mx-auto'>
-                    <h3 className='font-hanken text-3xl font-bold mb-10'>Other Projects</h3>
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                    <Swiper
+                        onSwiper={(swiper) => (swiperRef.current = swiper)}
+                        spaceBetween={15}
+                        breakpoints={{
+                            768: { slidesPerView: 3 },
+                            1200: { slidesPerView: 3 },
+                            1560: { slidesPerView: 3 },
+                        }}
+                    >
+                        {nextProjects.map((nextProject, index) => (
+                            <SwiperSlide key={index}>
+                                <button
+                                    type="button"
+                                    onClick={() => navigate(`/work/${nextProject.slug}`)}
+                                    className="group w-full block text-left cursor-pointer"
+                                >
+                                    <div className='relative overflow-hidden bg-secondary rounded-2xl'>
+                                        {(nextProject.associatedImg || nextProject.associatedName) && (
+                                            <div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-3 lg:left-6 z-10'>
+                                                {nextProject.associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={nextProject.associatedImg} alt={nextProject.title} loading='lazy' decoding='async' />}
+                                                {nextProject.associatedName && <span className='font-hanken font-semibold text-white uppercase text-xs lg:text-sm self-center'>{nextProject.associatedName}</span>}
+                                            </div>
+                                        )}
+                                        <img
+                                            src={nextProject.image}
+                                            alt={nextProject.title}
+                                            className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out'
+                                        />
+                                        <div className='absolute inset-0 bg-linear-to-t from-[#0d0a06]/70 to-transparent' />
+                                        <div className='absolute bottom-8 left-8 right-8'>
+                                            <div className='flex items-end justify-between mb-3'>
+                                                <div>
+                                                    <ul className='flex items-center gap-4 mb-4'>
+                                                        <li className='text-white uppercase text-xs glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{nextProject.subtitle}</li>
+                                                    </ul>
+                                                    <h2 className='text-white uppercase font-semibold text-xl lg:text-2xl leading-[1.4]'>{nextProject.title}</h2>
+                                                </div>
+                                                <div className="w-10 h-10 lg:w-12 lg:h-12 border border-white rounded-full flex items-center justify-center shrink-0 ml-4 relative overflow-hidden text-white group-hover:text-[#181009] transition-colors duration-300">
+                                                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-white rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></span>
+                                                    <span className="relative z-10 flex items-center justify-center">
+                                                        <svg className='size-3 lg:size-3.5' viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+                {/* <div className=''>
+                    <div className='flex w-full gap-2 lg:gap-4 pl-20'>
                         {nextProjects.map((nextProject, index) => (
                             <button
                                 key={index}
                                 type="button"
                                 onClick={() => navigate(`/work/${nextProject.slug}`)}
-                                className="group w-full text-left cursor-pointer"
+                                className="group text-left cursor-pointer"
                             >
                                 <div className='relative overflow-hidden h-[35vh] lg:h-[50vh] xl:h-[32vh] 2xl:h-[35vh] bg-secondary rounded-2xl'>
                                     {(nextProject.associatedImg || nextProject.associatedName) && (
-                                        <div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-6 z-10'>
+                                        <div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-3 lg:left-6 z-10'>
                                             {nextProject.associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={nextProject.associatedImg} alt={nextProject.title} loading='lazy' decoding='async' />}
                                             {nextProject.associatedName && <span className='font-hanken font-semibold text-white uppercase text-sm self-center'>{nextProject.associatedName}</span>}
                                         </div>
@@ -166,7 +246,7 @@ function WorkDetail() {
                                     />
                                     <div className='absolute inset-0 bg-linear-to-t from-[#0d0a06]/70 to-transparent' />
                                     <div className='absolute bottom-8 left-8 right-8'>
-                                        <div className='container mx-auto'>
+                                        <div className='lg:container lg:mx-auto'>
                                             <div className='flex items-end justify-between mb-3'>
                                                 <div>
                                                     <ul className='flex items-center gap-4 mb-4'>
@@ -177,7 +257,7 @@ function WorkDetail() {
                                                 <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center shrink-0 ml-4 relative overflow-hidden text-white group-hover:text-[#181009] transition-colors duration-300">
                                                     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-white rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></span>
                                                     <span className="relative z-10 flex items-center justify-center">
-                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <svg className='size-3.5' viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                                         </svg>
                                                     </span>
@@ -189,7 +269,8 @@ function WorkDetail() {
                             </button>
                         ))}
                     </div>
-                </div>
+                </div> */}
+
             </div>
         </div>
 
