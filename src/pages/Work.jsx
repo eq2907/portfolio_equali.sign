@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PortfolioData } from '../utils/PortfolioData';
+import gsap from 'gsap';
 
 // ── Arrow icon shared by buttons ──────────────────────────────────────────
 const ArrowIcon = () => (
@@ -11,12 +12,63 @@ const ArrowIcon = () => (
 
 function Work() {
     const [activeCategory, setActiveCategory] = useState('All');
+    const [displayedData, setDisplayedData] = useState(PortfolioData);
+    const gridRef = useRef(null);
+    const isAnimating = useRef(false);
+    const isFilterAction = useRef(false);
 
     const categories = ['All', ...new Set(PortfolioData.map((item) => item.subtitle))];
 
-    const filteredData = activeCategory === 'All'
-        ? PortfolioData
-        : PortfolioData.filter((item) => item.subtitle === activeCategory);
+    const handleCategoryChange = (category) => {
+        if (category === activeCategory || isAnimating.current) return;
+
+        const nextData = category === 'All'
+            ? PortfolioData
+            : PortfolioData.filter((item) => item.subtitle === category);
+
+        isAnimating.current = true;
+        isFilterAction.current = true;
+
+        const cards = gridRef.current?.querySelectorAll('.portfolio-card');
+
+        // Fade out current cards
+        gsap.to(cards, {
+            opacity: 0,
+            y: 20,
+            duration: 0.25,
+            stagger: 0.04,
+            ease: 'power3.in',
+            onComplete: () => {
+                // Swap data & category
+                setActiveCategory(category);
+                setDisplayedData(nextData);
+            },
+        });
+    };
+
+    // Animate in new cards after filter click data swap
+    useEffect(() => {
+        if (!isFilterAction.current) return;
+
+        const cards = gridRef.current?.querySelectorAll('.portfolio-card');
+        if (!cards || cards.length === 0) return;
+
+        gsap.fromTo(
+            cards,
+            { opacity: 0, y: 24 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.3,
+                stagger: 0.07,
+                ease: 'power3.out',
+                onComplete: () => {
+                    isAnimating.current = false;
+                    isFilterAction.current = false;
+                },
+            }
+        );
+    }, [displayedData]);
 
     return (
         <div className='pt-40 pb-14' id='work'>
@@ -33,16 +85,16 @@ function Work() {
                             <li
                                 key={index}
                                 className={activeCategory === category ? 'font-semibold active' : ''}
-                                onClick={() => setActiveCategory(category)}
+                                onClick={() => handleCategoryChange(category)}
                             >
                                 {category}
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-28'>
-                    {filteredData.map((item, index) => (
-                        <div className='bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col h-full' key={index}>
+                <div ref={gridRef} className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-28'>
+                    {displayedData.map((item, index) => (
+                        <div className='portfolio-card bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col h-full' key={item.slug ?? index}>
                             <figure className='flex flex-col h-full relative group'>
                                 <Link to={`/work/${item.slug}`} className="block overflow-hidden shrink-0 relative" style={{ backgroundColor: item.heroBgColor }}>
                                     {(item.associatedImg || item.associatedName) && (
@@ -59,14 +111,15 @@ function Work() {
                                         <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
                                         <p className='font-hanken font-normal my-2 text-base leading-[1.8] line-clamp-3'>{item.description}</p>
                                         <ul className='flex flex-wrap gap-2 mt-4 mb-4'>
-                                            {(Array.isArray(item.label) ? item.label : []).map((label, index) => (
-                                                <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={index}>{label}</li>
+                                            {(Array.isArray(item.label) ? item.label : []).map((label, i) => (
+                                                <li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-3 py-1 text-xs' key={i}>{label}</li>
                                             ))}
                                         </ul>
                                     </div>
                                     <div className='mt-auto pt-2'>
                                         <Link
-                                            className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 font-semibold uppercase px-6 pt-2.5 pb-2.5" data-block="button"
+                                            className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 font-semibold uppercase px-6 pt-2.5 pb-2.5"
+                                            data-block="button"
                                             to={`/work/${item.slug}`}
                                         >
                                             <span className='button__flair'></span>
