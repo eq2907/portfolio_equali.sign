@@ -4,6 +4,7 @@ import { PortfolioData } from '../utils/PortfolioData';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -145,7 +146,7 @@ function WorkDetail() {
                 </div>
             </div>
             <div className='work__other mb-24'>
-                <div className='container mx-auto flex items-center justify-between mb-10'>
+                <div className='container mx-auto flex items-center justify-between mb-6'>
                     <h3 className='font-hanken text-3xl font-bold'>Other Projects</h3>
                     {/* External navigation buttons */}
                     <div className='flex items-center gap-3'>
@@ -153,7 +154,7 @@ function WorkDetail() {
                             type='button'
                             onClick={() => swiperRef.current?.slidePrev()}
                             data-block='button'
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center button-effect button--stroke group text-[#333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group text-[#333333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
                         >
                             <span className='button__flair'></span>
                             <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -164,7 +165,7 @@ function WorkDetail() {
                             type='button'
                             onClick={() => swiperRef.current?.slideNext()}
                             data-block='button'
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center button-effect button--stroke group text-[#333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group text-[#333333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
                         >
                             <span className='button__flair'></span>
                             <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -178,10 +179,16 @@ function WorkDetail() {
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         spaceBetween={15}
                         rewind={true}
+                        speed={600}
+                        modules={[Autoplay]}
                         breakpoints={{
                             768: { slidesPerView: 3 },
                             1200: { slidesPerView: 3 },
                             1560: { slidesPerView: 3 },
+                        }}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
                         }}
                     >
                         {nextProjects.map((nextProject, index) => (
