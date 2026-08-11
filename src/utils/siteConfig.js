@@ -4,6 +4,7 @@
 // ─────────────────────────────────────────────
 
 import profilePhoto from '../assets/IMG_0492.jpg';
+import resumePDF from '../assets/eki_frontend_developer.pdf';
 
 const siteConfig = {
 	// ── Identity ──────────────────────────────
@@ -20,7 +21,7 @@ const siteConfig = {
 	// ── Short intro section (home page) ───────
 	introHeading: 'crafting interfaces',
 	introBio: `I started my career in design back in 2015. As time passed, I wanted to provide my clients with more than just static visuals, so I specialized in converting Figma and Photoshop designs into clean, responsive HTML, CSS, and JavaScript. With this dual expertise in both web design and front-end development, I bridge the gap between concept and reality to ensure a seamless user experience. My focus remains on delivering exceptional work that meets the needs of my clients and their customers.`,
-	resumeUrl: '#',
+	resumeUrl: resumePDF,
 
 	// ── Contact form ──────────────────────────
 	contactHeading: `<i class='font-bodoni normal-case' style="color:#CC2B0E;">Let's start A</i><br/> <span class='font-hanken'> CONVERSATION</span>`,
