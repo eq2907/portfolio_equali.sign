@@ -1,3 +1,5 @@
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
 import { PortfolioData } from '../utils/PortfolioData';
 import { StackedPortfolio } from '../components/SecWork';
 import siteConfig from '../utils/siteConfig';
@@ -10,6 +12,26 @@ const ArrowIcon = () => (
 );
 
 function Home() {
+	const lineRef = useRef(null);
+
+	useEffect(() => {
+		if (!lineRef.current) return;
+
+		const tl = gsap.timeline({ repeat: -1 });
+
+		tl.fromTo(
+			lineRef.current,
+			{ yPercent: -100 },
+			{ yPercent: 0, duration: 1.2, ease: 'power2.inOut' }
+		).to(lineRef.current, {
+			yPercent: 100,
+			duration: 1.2,
+			ease: 'power2.inOut',
+			delay: 0.2,
+		});
+
+		return () => tl.kill();
+	}, []);
 
 	const {
 		title,
@@ -56,7 +78,9 @@ function Home() {
 						</p>
 					</div>
 					<div className='scorll-to-explore font-hanken mt-8'>
-						<span className='bg-secondary-foreground w-0.5 h-16 block mx-auto'></span>
+						<div className='w-0.5 h-16 mx-auto overflow-hidden relative'>
+							<span ref={lineRef} className='bg-secondary-foreground w-full h-full block'></span>
+						</div>
 						<span className='block text-[#6B6B6B] font-normal mt-5 text-center text-xs lg:text-sm uppercase'>Scroll to explore</span>
 						<span className='block text-secondary-foreground mt-1 text-center font-semibold text-lg lg:text-xl uppercase'>Selected Work</span>
 					</div>
