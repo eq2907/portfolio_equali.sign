@@ -152,18 +152,22 @@ function WorkDetail() {
                         <button
                             type='button'
                             onClick={() => swiperRef.current?.slidePrev()}
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center hover:bg-secondary-foreground hover:border-secondary-foreground hover:text-white transition-all duration-300 group'
+                            data-block='button'
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center button-effect button--stroke group text-[#333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
                         >
-                            <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                            <span className='button__flair'></span>
+                            <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M13 7H1M1 7L7 1M1 7L7 13' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
                             </svg>
                         </button>
                         <button
                             type='button'
                             onClick={() => swiperRef.current?.slideNext()}
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center hover:bg-secondary-foreground hover:border-secondary-foreground hover:text-white transition-all duration-300 group'
+                            data-block='button'
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#DDD7CD] flex items-center justify-center button-effect button--stroke group text-[#333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
                         >
-                            <svg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                            <span className='button__flair'></span>
+                            <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M1 7H13M13 7L7 1M13 7L7 13' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
                             </svg>
                         </button>
@@ -173,6 +177,7 @@ function WorkDetail() {
                     <Swiper
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         spaceBetween={15}
+                        rewind={true}
                         breakpoints={{
                             768: { slidesPerView: 3 },
                             1200: { slidesPerView: 3 },
