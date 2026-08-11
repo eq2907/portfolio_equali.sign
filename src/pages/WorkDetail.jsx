@@ -122,7 +122,7 @@ function WorkDetail() {
                                 <ul className='flex flex-col gap-2'>
                                     {(Array.isArray(project.challenge) ? project.challenge : []).map((item, index) => (
                                         <li className='flex items-start gap-4 font-hanken text-base md:text-lg leading-[1.75] text-secondary-foreground' key={index}>
-                                            <span className='block h-1.5 w-1.5 bg-primary rounded-full mt-2.5'></span>
+                                            <span className='block w-1.5 h-1.5 shrink-0 bg-primary rounded-full mt-3'></span>
                                             <p className='flex-1'>{item}</p>
                                         </li>
                                     ))}
