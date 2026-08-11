@@ -74,7 +74,7 @@ function Work() {
         <div className='pt-40 pb-14' id='work'>
             <div className='container mx-auto'>
                 <h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Discover work</h3>
-                <h1 className='text-6xl leading-18'>
+                <h1 className='text-5xl lg:text-6xl leading-[1.2]'>
                     <span className='font-hanken font-semibold uppercase block'>Every project,</span>
                     <span className='font-bodoni italic block'><span className='text-primary'>Up close.</span></span>
                 </h1>

@@ -70,7 +70,7 @@ function Home() {
 
 			{/* ── Short intro ───────────────────────────────────── */}
 			<section className='short-intro-wrapper py-12 lg:py-24 border-y border-y-[#DDD7CD]' id='about'>
-				<div className='container mx-auto' id='contact'>
+				<div className='container mx-auto'>
 					<div className='grid grid-cols-12 gap-6'>
 						<div className='col-span-12 lg:col-span-8 order-2'>
 							<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Short intro</h3>
@@ -85,6 +85,7 @@ function Home() {
 							<a
 								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5'
 								href={resumeUrl}
+								id='contact'
 								target='_blank'
 								data-block="button"
 								rel='noopener noreferrer'
