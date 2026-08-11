@@ -13,14 +13,23 @@ function AppContent() {
 	const location = useLocation();
 	const handleScroll = (id) => {
 		const blockAlignment = id === 'about' ? 'center' : 'start';
-		const element = document.getElementById(id);
+		const targetId = id === 'contact' ? 'footer-write-email' : id;
+		const element = document.getElementById(targetId);
 		if (element) {
 			element.scrollIntoView({ behavior: 'smooth', block: blockAlignment });
+			if (id === 'contact') {
+				element.classList.add('highlight-text-shadow');
+				setTimeout(() => element.classList.remove('highlight-text-shadow'), 3500);
+			}
 		} else {
 			setTimeout(() => {
-				const retryElement = document.getElementById(id);
+				const retryElement = document.getElementById(targetId);
 				if (retryElement) {
 					retryElement.scrollIntoView({ behavior: 'smooth', block: blockAlignment });
+					if (id === 'contact') {
+						retryElement.classList.add('highlight-text-shadow');
+						setTimeout(() => retryElement.classList.remove('highlight-text-shadow'), 3500);
+					}
 				}
 			}, 100);
 		}

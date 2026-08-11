@@ -122,3 +122,22 @@
 		@apply bg-background text-secondary-foreground;
 	}
 }
+
+@keyframes highlightTextShadow {
+	0%, 100% {
+		text-shadow: none;
+		color: #ffffff;
+	}
+	25%, 75% {
+		text-shadow: 0 0 8px #FCC270, 0 0 16px #FCC270, 0 0 24px #CC2B0E, 0 0 32px #CC2B0E;
+		color: #FCC270;
+	}
+	50% {
+		text-shadow: 0 0 12px #FCC270, 0 0 24px #FCC270, 0 0 36px #CC2B0E, 0 0 48px #CC2B0E;
+		color: #ffffff;
+	}
+}
+
+.highlight-text-shadow {
+	animation: highlightTextShadow 2s ease-in-out 1;
+}

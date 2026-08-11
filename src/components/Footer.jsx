@@ -87,9 +87,16 @@ function Footer() {
 						<ul className='lg:text-right [&_a]:text-white [&_a]:font-hanken [&_a]:font-normal [&_a]:text-xl [&_a]:uppercase flex flex-col gap-2 mt-12 lg:mt-0'>
 							{footerLinks.map(({ label, href }) => {
 								const isActive = href.startsWith('/') ? (location.pathname === href || (href !== '/' && location.pathname.startsWith(href))) : false;
+								const isEmail = label.toLowerCase().includes('email');
 								return (
 									<li key={label}>
-										<a className={`link-effect link-effect--metis link-effect--white ${isActive ? 'active font-semibold' : ''}`} href={href}>{label}</a>
+										<a
+											id={isEmail ? 'footer-write-email' : undefined}
+											className={`link-effect link-effect--metis link-effect--white ${isActive ? 'active font-semibold' : ''} ${isEmail ? 'transition-all duration-300 rounded inline-block' : ''}`}
+											href={href}
+										>
+											{label}
+										</a>
 									</li>
 								);
 							})}
