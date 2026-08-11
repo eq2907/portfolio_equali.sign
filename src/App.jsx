@@ -12,14 +12,15 @@ import { initButtonEffect } from './utils/buttonEffect';
 function AppContent() {
 	const location = useLocation();
 	const handleScroll = (id) => {
+		const blockAlignment = id === 'about' ? 'center' : 'start';
 		const element = document.getElementById(id);
 		if (element) {
-			element.scrollIntoView({ behavior: 'smooth' });
+			element.scrollIntoView({ behavior: 'smooth', block: blockAlignment });
 		} else {
 			setTimeout(() => {
 				const retryElement = document.getElementById(id);
 				if (retryElement) {
-					retryElement.scrollIntoView({ behavior: 'smooth' });
+					retryElement.scrollIntoView({ behavior: 'smooth', block: blockAlignment });
 				}
 			}, 100);
 		}
