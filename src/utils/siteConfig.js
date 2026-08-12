@@ -3,7 +3,7 @@
 //  your portfolio. No component changes needed.
 // ─────────────────────────────────────────────
 
-import profilePhoto from '../assets/IMG_0492.jpg';
+import profilePhoto from '../assets/IMG_0492.webp';
 import resumePDF from '../assets/eki_frontend_developer.pdf';
 
 const siteConfig = {

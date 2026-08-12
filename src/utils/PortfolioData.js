@@ -1,11 +1,11 @@
-import Img_Porto_1 from '../assets/gamma_paint.jpg';
-import Img_Porto_2 from '../assets/corporateaccountability.jpg';
-import Img_Porto_3 from '../assets/ufoe.jpg';
-import Img_Porto_4 from '../assets/orix.jpg';
-import Img_Porto_5 from '../assets/kaltim_methanol.jpg';
-import Img_Porto_6 from '../assets/indika_energy.jpg';
-import Img_Associated_1 from '../assets/gositus_logo.jpg'
-import Img_Associated_2 from '../assets/stucel_logo.jpg'
+import Img_Porto_1 from '../assets/gamma_paint.webp';
+import Img_Porto_2 from '../assets/corporateaccountability.webp';
+import Img_Porto_3 from '../assets/ufoe.webp';
+import Img_Porto_4 from '../assets/orix.webp';
+import Img_Porto_5 from '../assets/kaltim_methanol.webp';
+import Img_Porto_6 from '../assets/indika_energy.webp';
+import Img_Associated_1 from '../assets/gositus_logo.webp'
+import Img_Associated_2 from '../assets/stucel_logo.webp'
 
 const PortfolioData = [
     {
