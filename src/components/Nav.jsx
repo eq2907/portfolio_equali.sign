@@ -272,7 +272,7 @@ function Nav({ handleScroll }) {
 					<div className='menu__panel'>
 						<div className='flex justify-between mb-6'>
 							<div className='panel__logo'>
-								<Link className='font-medium text-xl self-center' to='/'>
+								<Link className='font-medium text-xl self-center' to='/' onClick={() => { handleScroll('home'); document.getElementById('closeBtn')?.click(); }}>
 									{nameParts.before}
 									<span className='text-primary'>{nameParts.accent}</span>
 									{nameParts.after}

@@ -68,12 +68,12 @@ function Work() {
             <div className='pointer-events-none absolute -top-10 left-0 h-80 w-80 rounded-full bg-primary/20 blur-3xl'></div>
             <div className='pt-40 pb-8 lg:pb-14' id='work'>
                 <div className='container mx-auto'>
-                    <h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Discover work</h3>
-                    <h1 className='text-5xl lg:text-6xl leading-[1.2]'>
-                        <span className='font-hanken font-semibold uppercase block'>Every project,</span>
-                        <span className='font-bodoni italic block'><span className='text-primary'>Up close.</span></span>
+                    <h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3 relative z-10'>Discover work</h3>
+                    <h1 className='text-5xl lg:text-6xl leading-[1.2] relative z-10'>
+                        <span className='font-hanken font-semibold uppercase block relative z-10'>Every project,</span>
+                        <span className='font-bodoni italic block relative z-10'><span className='text-primary'>Up close.</span></span>
                     </h1>
-                    <p className='font-hanken max-w-2xl font-normal mt-8 text-xl leading-[1.8]'>Browse the full catalog of front-end work — filter by category or search by tech to find something that matches what you're building.</p>
+                    <p className='font-hanken max-w-2xl font-normal mt-8 text-xl leading-[1.8] relative z-10'>Browse the full catalog of front-end work — filter by category or search by tech to find something that matches what you're building.</p>
                     <div className='filter-work my-8'>
                         <ul className='flex gap-4 [&_li]:font-hanken [&_li]:text-lg [&_li]:cursor-pointer'>
                             {categories.map((category, index) => (

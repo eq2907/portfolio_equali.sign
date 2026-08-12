@@ -55,7 +55,7 @@ function Home() {
 			{/* ── Hero ──────────────────────────────────────────── */}
 			<div className='hero pt-40 pb-20' id='home'>
 				<div className='container mx-auto'>
-					<figure className='w-63.5 mx-auto'>
+					<figure className='w-63.5 mx-auto relative z-10'>
 						<img
 							className='rounded-full'
 							src={profilePhoto}
@@ -79,7 +79,7 @@ function Home() {
 						</p>
 					</div>
 					<div className='scorll-to-explore font-hanken mt-8'>
-						<div className='w-0.5 h-16 mx-auto overflow-hidden relative'>
+						<div className='w-px h-16 mx-auto overflow-hidden relative'>
 							<span ref={lineRef} className='bg-secondary-foreground w-full h-full block'></span>
 						</div>
 						<span className='block text-[#6B6B6B] font-normal mt-5 text-center text-xs lg:text-sm uppercase'>Scroll to explore</span>
