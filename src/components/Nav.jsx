@@ -243,9 +243,9 @@ function Nav({ handleScroll }) {
 										<span className="self-center relative z-10">{navCta.label}</span>
 									</Link>
 								</div>
-								<button id='openBtn' className='block lg:hidden' type='button' aria-label="Open menu">
+								<button id='openBtn' className='block lg:hidden group' type='button' aria-label="Open menu">
 									<svg className='size-8' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path className='stroke-secondary-foreground' d="M4 17H20M4 12H20M4 7H20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+										<path className='stroke-secondary-foreground group-hover:stroke-primary transition-all duration-300' d="M4 17H20M4 12H20M4 7H20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 									</svg>
 								</button>
 							</nav>
@@ -278,14 +278,14 @@ function Nav({ handleScroll }) {
 									{nameParts.after}
 								</Link>
 							</div>
-							<button id='closeBtn' className='self-center' aria-label='Close menu'>
-								<svg className='size-8' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<button id='closeBtn' className='self-center group' aria-label='Close menu'>
+								<svg className='size-8 group-hover:rotate-90 transition-all duration-300' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 									<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
 									<g id="SVGRepo_iconCarrier">
 										<rect width="24" height="24" fill="none"></rect>
-										<path d="M7 17L16.8995 7.10051" stroke="#333" strokeLinecap="round" strokeLinejoin="round"></path>
-										<path d="M7 7.00001L16.8995 16.8995" stroke="#333" strokeLinecap="round" strokeLinejoin="round"></path>
+										<path className='stroke-secondary-foreground group-hover:stroke-primary transition-all duration-300' d="M7 17L16.8995 7.10051" strokeLinecap="round" strokeLinejoin="round"></path>
+										<path className='stroke-secondary-foreground group-hover:stroke-primary transition-all duration-300' d="M7 7.00001L16.8995 16.8995" strokeLinecap="round" strokeLinejoin="round"></path>
 									</g>
 								</svg>
 							</button>
