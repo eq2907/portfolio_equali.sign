@@ -13,11 +13,11 @@ function AppContent() {
 	const location = useLocation();
 	const handleScroll = (id) => {
 		const blockAlignment = id === 'about' ? 'center' : 'start';
-		const targetId = id === 'contact' ? 'footer-write-email' : id;
+		const targetId = id === 'get-in-touch' ? 'footer-write-email' : id;
 		const element = document.getElementById(targetId);
 		if (element) {
 			element.scrollIntoView({ behavior: 'smooth', block: blockAlignment });
-			if (id === 'contact') {
+			if (id === 'get-in-touch') {
 				element.classList.add('highlight-text-shadow');
 				setTimeout(() => element.classList.remove('highlight-text-shadow'), 3500);
 			}
@@ -26,7 +26,7 @@ function AppContent() {
 				const retryElement = document.getElementById(targetId);
 				if (retryElement) {
 					retryElement.scrollIntoView({ behavior: 'smooth', block: blockAlignment });
-					if (id === 'contact') {
+					if (id === 'get-in-touch') {
 						retryElement.classList.add('highlight-text-shadow');
 						setTimeout(() => retryElement.classList.remove('highlight-text-shadow'), 3500);
 					}

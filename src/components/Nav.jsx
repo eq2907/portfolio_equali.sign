@@ -14,8 +14,6 @@ const AnimatedLink = ({ item, onClick }) => {
 	const text1Ref = useRef(null);
 	const text2Ref = useRef(null);
 
-
-
 	const handleMouseEnter = () => {
 		gsap.to(text1Ref.current, {
 			yPercent: -100,
@@ -240,7 +238,7 @@ function Nav({ handleScroll }) {
 									{nav.map((item) => (
 										<AnimatedLink key={item.label} item={item} onClick={() => handleScroll(item.label.toLowerCase())} />
 									))}
-									<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2 hidden lg:block' onClick={() => handleScroll('contact')} data-block="button">
+									<Link to={navCta.to} className='btn-outline button-effect button--stroke px-6 py-2 hidden lg:block' onClick={() => handleScroll('get-in-touch')} data-block="button">
 										<span className='button__flair'></span>
 										<span className="self-center relative z-10">{navCta.label}</span>
 									</Link>
@@ -304,7 +302,7 @@ function Nav({ handleScroll }) {
 						))}
 						<li>
 							<Link to={navCta.to} className='w-full btn-outline button-effect button--stroke px-6 py-2 text-center block' onClick={() => {
-								handleScroll('contact');
+								handleScroll('get-in-touch');
 								document.getElementById('closeBtn')?.click();
 							}} data-block="button">
 								<span className='button__flair'></span>

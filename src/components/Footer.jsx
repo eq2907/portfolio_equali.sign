@@ -59,7 +59,7 @@ function Footer() {
 	const location = useLocation();
 
 	return (
-		<footer className='bg-[#181009]'>
+		<footer className='bg-[#181009]' id='get-in-touch'>
 			<div className='container mx-auto py-10 lg:py-20 relative'>
 				<div className='grid grid-cols-12 gap-4'>
 

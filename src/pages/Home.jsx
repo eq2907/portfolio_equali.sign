@@ -51,6 +51,7 @@ function Home() {
 
 	return (
 		<>
+			<div className='pointer-events-none absolute -top-10 left-0 h-80 w-80 rounded-full bg-primary/20 blur-3xl'></div>
 			{/* ── Hero ──────────────────────────────────────────── */}
 			<div className='hero mt-40 mb-20'>
 				<div className='container mx-auto'>
@@ -109,7 +110,6 @@ function Home() {
 							<a
 								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5'
 								href={resumeUrl}
-								id='contact'
 								target='_blank'
 								data-block="button"
 								rel='noopener noreferrer'

@@ -36,7 +36,7 @@ const siteConfig = {
 		// { label: 'Contact', to: '/' },
 	],
 	/** CTA button in the nav bar */
-	navCta: { label: "Get in Touch", to: '/' },
+	navCta: { label: "Get in Touch", to: '#' },
 
 	// ── Footer ────────────────────────────────
 	footerHeading: 'Have a project in mind?',
