@@ -3,13 +3,6 @@ import { Link } from 'react-router-dom';
 import { PortfolioData } from '../utils/PortfolioData';
 import gsap from 'gsap';
 
-// ── Arrow icon shared by buttons ──────────────────────────────────────────
-const ArrowIcon = () => (
-    <svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
-    </svg>
-);
-
 function Work() {
     const [activeCategory, setActiveCategory] = useState('All');
     const [displayedData, setDisplayedData] = useState(PortfolioData);
@@ -96,8 +89,8 @@ function Work() {
                     </div>
                     <div ref={gridRef} className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 lg:mb-28'>
                         {displayedData.map((item, index) => (
-                            <div className='portfolio-card bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col h-full' key={item.slug ?? index}>
-                                <figure className='flex flex-col h-full relative group'>
+                            <div className='portfolio-card group bg-white/60 rounded-2xl overflow-hidden hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col h-full' key={item.slug ?? index}>
+                                <figure className='flex flex-col h-full relative'>
                                     <Link to={`/work/${item.slug}`} className="block overflow-hidden shrink-0 relative" style={{ backgroundColor: item.heroBgColor }}>
                                         {(item.associatedImg || item.associatedName) && (
                                             <div className='glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 absolute top-4 lg:top-8 left-3 lg:left-6 z-10'>
@@ -126,7 +119,9 @@ function Work() {
                                             >
                                                 <span className='button__flair'></span>
                                                 <span className="self-center relative z-10">View Case Study</span>
-                                                <ArrowIcon />
+                                                <svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                                    <path className='stroke-[#181009]' d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' strokeLinecap='round' strokeLinejoin='round' />
+                                                </svg>
                                             </Link>
                                         </div>
                                     </figcaption>

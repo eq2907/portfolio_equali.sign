@@ -7,7 +7,7 @@ import siteConfig from '../utils/siteConfig';
 // ── Arrow icon shared by buttons ──────────────────────────────────────────
 const ArrowIcon = () => (
 	<svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
+		<path className='stroke-[#181009] group-hover:stroke-white' d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' strokeLinecap='round' strokeLinejoin='round' />
 	</svg>
 );
 
@@ -53,7 +53,7 @@ function Home() {
 		<>
 			<div className='pointer-events-none absolute -top-10 left-0 h-80 w-80 rounded-full bg-primary/20 blur-3xl'></div>
 			{/* ── Hero ──────────────────────────────────────────── */}
-			<div className='hero mt-40 mb-20'>
+			<div className='hero pt-40 pb-20' id='home'>
 				<div className='container mx-auto'>
 					<figure className='w-63.5 mx-auto'>
 						<img
@@ -108,7 +108,7 @@ function Home() {
 							</h2>
 							<p className='font-hanken font-normal text-lg lg:text-xl leading-[1.8] mb-6'>{introBio}</p>
 							<a
-								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5'
+								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5 group'
 								href={resumeUrl}
 								target='_blank'
 								data-block="button"

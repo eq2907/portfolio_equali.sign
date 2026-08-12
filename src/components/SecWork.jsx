@@ -4,15 +4,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 
-// ── Arrow icon shared by buttons ──────────────────────────────────────────
-export const ArrowIcon = () => {
-	return (
-		<svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-			<path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
-		</svg>
-	);
-};
-
 gsap.registerPlugin(ScrollTrigger)
 
 function Portfolio({ title, subtitle, shortDescription, image, associatedImg, associatedName, linkWork, label, imageOrder = 2, textOrder = 1, slug }) {
@@ -25,10 +16,12 @@ function Portfolio({ title, subtitle, shortDescription, image, associatedImg, as
 						<h3 className='text-[#665B53] text-center uppercase text-sm mb-3'>{subtitle}</h3>
 						<h2 className='text-center uppercase font-semibold text-4xl lg:text-5xl leading-[1.2] mb-4'>{title}</h2>
 						<p className='max-w-md text-center text-base leading-[1.8] text-secondary-foreground/70 mx-auto mb-4'>{shortDescription}</p>
-						<Link className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5' to={slug ? `/work/${slug}` : linkWork} data-block="button" rel='noopener noreferrer'>
+						<Link className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5 group' to={slug ? `/work/${slug}` : linkWork} data-block="button" rel='noopener noreferrer'>
 							<span className='button__flair'></span>
 							<span className='self-center relative z-10'>View Case Study</span>
-							<ArrowIcon />
+							<svg className='self-center relative z-10 group-hover:stroke-white' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+								<path className='stroke-[#181009]' d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' strokeLinecap='round' strokeLinejoin='round' />
+							</svg>
 						</Link>
 					</div>
 				</div>

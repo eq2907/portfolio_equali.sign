@@ -11,8 +11,8 @@ import 'swiper/css/navigation';
 // ── Arrow icon shared by buttons ──────────────────────────────────────────
 export const ArrowIcon = () => {
     return (
-        <svg className='self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' stroke='#333333' strokeLinecap='round' strokeLinejoin='round' />
+        <svg className='stroke-[#181009] group-hover:stroke-white self-center relative z-10' width='9' height='9' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M0.5 6.5L6.5 0.5M6.5 5.9V0.5H1.1' strokeLinecap='round' strokeLinejoin='round' />
         </svg>
     );
 };
@@ -111,7 +111,7 @@ function WorkDetail() {
                                 <p className="font-hanken text-base md:text-lg leading-[1.75] text-secondary-foreground">
                                     {project.description}
                                 </p>
-                                <Link className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-6 font-semibold uppercase px-6 pt-2.5 pb-2.5" target="_blank" to={project.liveUrl} data-block="button">
+                                <Link className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-6 font-semibold uppercase px-6 pt-2.5 pb-2.5 group" target="_blank" to={project.liveUrl} data-block="button">
                                     <span className='button__flair'></span>
                                     <span className="self-center relative z-10">View Live Website</span>
                                     <ArrowIcon />

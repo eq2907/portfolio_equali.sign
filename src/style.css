@@ -123,6 +123,18 @@
 	}
 }
 
+.portfolio-card {
+	& .button-effect {
+		&:hover {
+			& svg {
+				& path {
+					@apply stroke-white;
+				}
+			}
+		}
+	}
+}
+
 @keyframes highlightTextShadow {
 	0%, 100% {
 		text-shadow: none;

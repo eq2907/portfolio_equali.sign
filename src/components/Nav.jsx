@@ -228,7 +228,7 @@ function Nav({ handleScroll }) {
 				<div className='container mx-auto'>
 					<div className='glass font-hanken py-3 px-8 rounded-full'>
 						<div className='flex justify-between'>
-							<Link className='font-medium text-xl self-center' to='/'>
+							<Link className='font-medium text-xl self-center' to='/' onClick={() => handleScroll('home')}>
 								{nameParts.before}
 								<span className='text-primary'>{nameParts.accent}</span>
 								{nameParts.after}
