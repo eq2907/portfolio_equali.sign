@@ -146,6 +146,18 @@
 	}
 }
 
+.work__other {
+	& .button-effect {
+		&:hover, &:active {
+			@media (max-width: 768px) {
+				& svg path {
+					@apply stroke-white!;
+				}
+			}
+		}
+	}
+}
+
 @keyframes highlightTextShadow {
 	0%, 100% {
 		text-shadow: none;
