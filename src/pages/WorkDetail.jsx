@@ -32,7 +32,13 @@ function WorkDetail() {
     useEffect(() => {
         if (!project) return;
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Reset scroll animations so they trigger again for the new project
+        const revealElements = document.querySelectorAll('.reveal, [class*="reveal-"]');
+        revealElements.forEach((el) => {
+            el.classList.remove('active');
+        });
+
+        window.scrollTo(0, 0);
 
         const ctx = gsap.context(() => {
             // Hero parallax
@@ -227,7 +233,7 @@ function WorkDetail() {
                             <SwiperSlide key={index}>
                                 <button
                                     type="button"
-                                    onClick={() => navigate(`/work/${nextProject.slug}`)}
+                                    onClick={() => window.location.href = `/work/${nextProject.slug}`}
                                     className="group w-full block text-left cursor-pointer"
                                 >
                                     <div className='relative overflow-hidden bg-secondary rounded-2xl'>
