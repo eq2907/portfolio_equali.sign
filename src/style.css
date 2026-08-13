@@ -102,7 +102,7 @@
 
 	.filter-work {
 		& li {
-			@apply text-[#b4b4b4];
+			@apply text-[#b4b4b4] transition-colors duration-300;
 			&.active {
 				@apply text-secondary-foreground;
 			}

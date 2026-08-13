@@ -19,6 +19,7 @@ function Work() {
             ? PortfolioData
             : PortfolioData.filter((item) => item.subtitle === category);
 
+        setActiveCategory(category);
         isAnimating.current = true;
         isFilterAction.current = true;
 
@@ -32,8 +33,7 @@ function Work() {
             stagger: 0.04,
             ease: 'power3.in',
             onComplete: () => {
-                // Swap data & category
-                setActiveCategory(category);
+                // Swap data
                 setDisplayedData(nextData);
             },
         });
