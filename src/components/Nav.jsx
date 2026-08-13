@@ -91,6 +91,7 @@ function Nav({ handleScroll }) {
 		tl.to(offcanvas, {
 			pointerEvents: "auto",
 			xPercent: 0,
+			right: 0,
 			duration: 0.7,
 			ease: "power3.out"
 		}, 0);

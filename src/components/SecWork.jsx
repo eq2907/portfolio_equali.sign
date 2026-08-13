@@ -26,20 +26,22 @@ function Portfolio({ title, subtitle, shortDescription, image, associatedImg, as
 					</div>
 				</div>
 				<div style={{ order: imageOrder }} className='w-full h-full min-h-87.5 md:min-h-full relative'>
-					{(associatedImg || associatedName) && (
-						<div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-4'>
-							{associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={associatedImg} alt={title} loading='lazy' decoding='async' />}
-							{associatedName && <span className='font-hanken font-semibold text-secondary-foreground uppercase text-sm self-center'>{associatedName}</span>}
+					<Link to={slug ? `/work/${slug}` : linkWork} rel='noopener noreferrer'>
+						{(associatedImg || associatedName) && (
+							<div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-4'>
+								{associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={associatedImg} alt={title} loading='lazy' decoding='async' />}
+								{associatedName && <span className='font-hanken font-semibold text-secondary-foreground uppercase text-sm self-center'>{associatedName}</span>}
+							</div>
+						)}
+						<img className='w-full h-full object-cover' src={image} alt={title} loading='lazy' decoding='async' />
+						<div className='absolute bottom-8 left-4 lg:right-8 lg:left-auto'>
+							<ul className='flex flex-wrap gap-3'>
+								{(Array.isArray(label) ? label : []).map((item, index) => (
+									<li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-4 py-1 text-sm' key={index}>{item}</li>
+								))}
+							</ul>
 						</div>
-					)}
-					<img className='w-full h-full object-cover' src={image} alt={title} loading='lazy' decoding='async' />
-					<div className='absolute bottom-8 left-4 lg:right-8 lg:left-auto'>
-						<ul className='flex flex-wrap gap-3'>
-							{(Array.isArray(label) ? label : []).map((item, index) => (
-								<li className='glass font-hanken font-semibold text-secondary-foreground uppercase rounded-full px-4 py-1 text-sm' key={index}>{item}</li>
-							))}
-						</ul>
-					</div>
+					</Link>
 				</div>
 			</div>
 		</div>

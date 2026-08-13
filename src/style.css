@@ -111,7 +111,7 @@
 	}
 
 	.offcanvas {
-		@apply w-70 max-w-[90vw] fixed top-0 right-0 h-screen z-1050;
+		@apply w-70 max-w-[90vw] fixed top-0 -right-full h-screen z-1050;
 	}
 
 	.svg-wrap {
