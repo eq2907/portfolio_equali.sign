@@ -91,11 +91,11 @@ function WorkDetail() {
 
     return (
         <div className='work-detail'>
-            <div className='hero-work h-[80vh] lg:h-[90vh] 2xl:h-[90vh] relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
-                <figure ref={heroRef} className='w-full h-[80vh] lg:h-[90vh] 2xl:h-[90vh]'>
+            <div className='hero-work h-screen lg:h-[90vh] 2xl:h-[90vh] relative overflow-hidden' style={{ backgroundColor: project.heroBgColor }}>
+                <figure ref={heroRef} className='w-full h-screen lg:h-[90vh] 2xl:h-[90vh]'>
                     <img ref={heroImgRef} className='w-full h-full object-cover' src={project.image} alt={project.title} fetchPriority='high' decoding='async' />
                 </figure>
-                <div className='absolute bottom-42 left-0 w-full z-10'>
+                <div className='absolute bottom-12 lg:bottom-42 left-0 w-full z-10'>
                     <div className='container mx-auto'>
                         <ul className='lg:flex lg:flex-row lg:items-center lg:gap-4 mb-6 [&_li]:mb-4 [&_li]:last:mb-0 [&_li]:lg:mb-0'>
                             <li className='text-white uppercase text-sm glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{project.subtitle}</li>
@@ -186,7 +186,7 @@ function WorkDetail() {
                             type='button'
                             onClick={() => swiperRef.current?.slidePrev()}
                             data-block='button'
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group hover:border-secondary-foreground transition-all duration-300'
+                            className='group w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke hover:border-secondary-foreground transition-all duration-300'
                         >
                             <span className='button__flair'></span>
                             <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -197,7 +197,7 @@ function WorkDetail() {
                             type='button'
                             onClick={() => swiperRef.current?.slideNext()}
                             data-block='button'
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group hover:border-secondary-foreground transition-all duration-300'
+                            className='group w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke hover:border-secondary-foreground transition-all duration-300'
                         >
                             <span className='button__flair'></span>
                             <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
