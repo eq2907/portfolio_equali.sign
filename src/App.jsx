@@ -1,6 +1,7 @@
 import './style.css';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Preloader from './components/Preloader';
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -67,10 +68,15 @@ function AppContent() {
 }
 
 function App() {
+	const [loading, setLoading] = useState(true);
+
 	return (
-		<BrowserRouter>
-			<AppContent />
-		</BrowserRouter>
+		<>
+			{loading && <Preloader onComplete={() => setLoading(false)} />}
+			<BrowserRouter>
+				<AppContent />
+			</BrowserRouter>
+		</>
 	);
 }
 
