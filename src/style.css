@@ -118,6 +118,9 @@
 }
 
 @layer base {
+	html {
+		scroll-behavior: smooth;
+	}
 	body {
 		@apply bg-background text-secondary-foreground;
 	}

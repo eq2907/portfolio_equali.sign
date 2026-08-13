@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Work from './pages/Work';
 import WorkDetail from './pages/WorkDetail';
 import { initButtonEffect } from './utils/buttonEffect';
+import NotFound from './components/NotFound';
 
 function AppContent() {
 	const location = useLocation();
@@ -36,6 +37,12 @@ function AppContent() {
 	};
 
 	useEffect(() => {
+		if ('scrollRestoration' in window.history) {
+			window.history.scrollRestoration = 'manual';
+		}
+	}, []);
+
+	useEffect(() => {
 		// Initialize the button effect whenever the location changes
 		initButtonEffect();
 	}, [location]);
@@ -47,6 +54,8 @@ function AppContent() {
 				<Route path='/' element={<Home />} />
 				<Route path='/work' element={<Work />} />
 				<Route path='/work/:slug' element={<WorkDetail />} />
+
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<Footer />
 		</>

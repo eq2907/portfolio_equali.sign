@@ -65,8 +65,8 @@ function Work() {
 
     return (
         <>
-            <div className='pointer-events-none absolute -top-10 left-0 h-80 w-80 rounded-full bg-primary/20 blur-3xl'></div>
-            <div className='pt-40 pb-8 lg:pb-14' id='work'>
+            <div className='pt-40 pb-8 lg:pb-14 relative' id='work'>
+                <div className='pointer-events-none absolute -top-8 -left-14 h-80 w-80 rounded-full bg-primary/20 blur-3xl'></div>
                 <div className='container mx-auto'>
                     <h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3 relative z-10'>Discover work</h3>
                     <h1 className='text-5xl lg:text-6xl leading-[1.2] relative z-10'>
@@ -130,6 +130,7 @@ function Work() {
                         ))}
                     </div>
                 </div>
+                <div className='pointer-events-none absolute -bottom-10 right-0 h-80 w-80 rounded-full bg-primary/30 opacity-50 blur-3xl'></div>
             </div>
         </>
     );

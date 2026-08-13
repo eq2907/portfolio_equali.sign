@@ -51,7 +51,7 @@ function Home() {
 
 	return (
 		<>
-			<div className='pointer-events-none absolute -top-10 left-0 h-80 w-80 rounded-full bg-primary/20 blur-3xl'></div>
+			<div className='pointer-events-none absolute -top-8 -left-14 h-80 w-80 rounded-full bg-primary/20 blur-3xl'></div>
 			{/* ── Hero ──────────────────────────────────────────── */}
 			<div className='hero pt-40 pb-20' id='home'>
 				<div className='container mx-auto'>
