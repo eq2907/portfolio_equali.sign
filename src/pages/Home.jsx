@@ -57,7 +57,7 @@ function Home() {
 				<div className='container mx-auto'>
 					<figure className='w-63.5 mx-auto relative z-10'>
 						<img
-							className='rounded-full'
+							className='rounded-full reveal-fade-up'
 							src={profilePhoto}
 							alt={siteConfig.name}
 							fetchPriority='high'
@@ -66,15 +66,15 @@ function Home() {
 					</figure>
 					<div className='hero__description text-center mt-16'>
 						<h1 className='text-5xl lg:text-6xl font-semibold'>
-							<span className='font-hanken uppercase block leading-[1.2]'>{title}</span>
-							<span className='block font-bodoni italic lg:my-2.5 leading-[1.2]'>
+							<span className='font-hanken uppercase block leading-[1.2] reveal-fade-up'>{title}</span>
+							<span className='block font-bodoni italic lg:my-2.5 leading-[1.2] reveal-fade-up' data-delay="200">
 								{introHeadingBefore && introHeadingBefore.trim()}{' '}
-								<span className='text-primary'>{taglineAccent}</span>{' '}
+								<span className='text-primary reveal-fade-up'>{taglineAccent}</span>{' '}
 								{introHeadingAfter && introHeadingAfter.trim()}
 							</span>
-							<span className='font-hanken uppercase block mt-4 lg:mt-6'>people love.</span>
+							<span className='font-hanken uppercase block mt-4 lg:mt-6 reveal-fade-up' data-delay="200">people love.</span>
 						</h1>
-						<p className='font-hanken max-w-120 font-normal mx-auto mt-8 text-lg lg:text-xl leading-[1.8]'>
+						<p className='font-hanken max-w-120 font-normal mx-auto mt-8 text-lg lg:text-xl leading-[1.8] reveal-fade-up' data-delay="200">
 							{bio}
 						</p>
 					</div>
@@ -82,8 +82,8 @@ function Home() {
 						<div className='w-px h-16 mx-auto overflow-hidden relative'>
 							<span ref={lineRef} className='bg-secondary-foreground w-full h-full block'></span>
 						</div>
-						<span className='block text-[#6B6B6B] font-normal mt-5 text-center text-xs lg:text-sm uppercase'>Scroll to explore</span>
-						<span className='block text-secondary-foreground mt-1 text-center font-semibold text-lg lg:text-xl uppercase'>Selected Work</span>
+						<span className='block text-[#6B6B6B] font-normal mt-5 text-center text-xs lg:text-sm uppercase reveal-fade-up' data-delay="200">Scroll to explore</span>
+						<span className='block text-secondary-foreground mt-1 text-center font-semibold text-lg lg:text-xl uppercase reveal-fade-up' data-delay="200">Selected Work</span>
 					</div>
 				</div>
 			</div>
@@ -98,17 +98,17 @@ function Home() {
 				<div className='container mx-auto'>
 					<div className='grid grid-cols-12 gap-6'>
 						<div className='col-span-12 lg:col-span-8 order-2'>
-							<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3'>Short intro</h3>
-							<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.3] max-w-220 mb-3.5'>
+							<h3 className='text-[#665B53] font-hanken font-semibold uppercase text-sm mb-3 reveal-fade-up' data-delay="200">Short intro</h3>
+							<h2 className='font-hanken font-semibold text-4xl lg:text-5xl uppercase leading-[1.3] max-w-220 mb-3.5 reveal-fade-up' data-delay="200">
 								Crafting clean code,{' '}
 								<span className='font-bodoni italic text-[#CC2B0E] normal-case inline-block mb-2'>
 									intuitive UX, and digital experiences
 								</span>{' '}
 								that stand the test of time.
 							</h2>
-							<p className='font-hanken font-normal text-lg lg:text-xl leading-[1.8] mb-6'>{introBio}</p>
+							<p className='font-hanken font-normal text-lg lg:text-xl leading-[1.8] mb-6 reveal-fade-up' data-delay="200">{introBio}</p>
 							<a
-								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5 group'
+								className='btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 mt-2 font-semibold uppercase px-6 pt-2.5 pb-2.5 group reveal-fade-up' data-delay="200"
 								href={resumeUrl}
 								target='_blank'
 								data-block="button"

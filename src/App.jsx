@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Work from './pages/Work';
 import WorkDetail from './pages/WorkDetail';
 import { initButtonEffect } from './utils/buttonEffect';
+import { initScrollAnimate } from './utils/scrollAnimate';
 import NotFound from './components/NotFound';
 
 function AppContent() {
@@ -43,8 +44,11 @@ function AppContent() {
 	}, []);
 
 	useEffect(() => {
-		// Initialize the button effect whenever the location changes
+		// Initialize button and scroll animations whenever the location changes
 		initButtonEffect();
+		setTimeout(() => {
+			initScrollAnimate();
+		}, 100);
 	}, [location]);
 
 	return (

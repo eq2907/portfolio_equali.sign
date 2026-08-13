@@ -97,7 +97,7 @@ function WorkDetail() {
                 </figure>
                 <div className='absolute bottom-12 lg:bottom-42 left-0 w-full z-10'>
                     <div className='container mx-auto'>
-                        <ul className='lg:flex lg:flex-row lg:items-center lg:gap-4 mb-6 [&_li]:mb-4 [&_li]:last:mb-0 [&_li]:lg:mb-0'>
+                        <ul className='lg:flex lg:flex-row lg:items-center lg:gap-4 mb-6 [&_li]:mb-4 [&_li]:last:mb-0 [&_li]:lg:mb-0 reveal-fade-up' data-delay="200">
                             <li className='text-white uppercase text-sm glass font-hanken font-semibold rounded-full px-4 py-1 inline-block'>{project.subtitle}</li>
                             <li>
                                 {(project.associatedImg || project.associatedName) && (
@@ -108,8 +108,8 @@ function WorkDetail() {
                                 )}
                             </li>
                         </ul>
-                        <h1 className='text-white uppercase font-semibold text-4xl lg:text-5xl mb-6'>{project.title}</h1>
-                        <p className='text-white font-hanken max-w-2xl font-normal text-lg lg:text-xl leading-[1.8]'>{project.shortDescription}</p>
+                        <h1 className='text-white uppercase font-semibold text-4xl lg:text-5xl mb-6 reveal-fade-up' data-delay="200">{project.title}</h1>
+                        <p className='text-white font-hanken max-w-2xl font-normal text-lg lg:text-xl leading-[1.8] reveal-fade-up' data-delay="200">{project.shortDescription}</p>
                     </div>
                 </div>
                 <div className='w-full h-full bg-linear-to-t from-black/80 to-transparent absolute top-0 left-0 z-9'></div>
@@ -125,7 +125,7 @@ function WorkDetail() {
                             { label: 'Category', value: project.subtitle },
                         ].map((item) => (
                             <li key={item.label} className="py-6 px-6 relative after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-[#DDD7CD] last:after:hidden before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#DDD7CD] lg:before:hidden last:before:hidden">
-                                <div className='flex flex-col justify-center h-full'>
+                                <div className='flex flex-col justify-center h-full reveal-fade-right' data-delay="250">
                                     <p className="font-hanken text-xs uppercase text-[#665B53] font-semibold mb-1">{item.label}</p>
                                     <p className="font-hanken text-base font-medium text-secondary-foreground leading-relaxed">{item.value}</p>
                                 </div>
@@ -138,7 +138,7 @@ function WorkDetail() {
                 <div className='container pb-12 mx-auto border-b border-[#DDD7CD]'>
                     <div className='grid grid-cols-12 gap-6'>
                         <div className='col-span-12 lg:col-span-8 [&>div:first-child]:mb-10'>
-                            <div>
+                            <div className='reveal-fade-up' data-delay="200">
                                 <h3 className='font-hanken text-3xl font-bold mb-4'>Overview</h3>
                                 <p className="font-hanken text-base md:text-lg leading-[1.75] text-secondary-foreground">
                                     {project.description}
@@ -149,7 +149,7 @@ function WorkDetail() {
                                     <ArrowIcon />
                                 </Link>
                             </div>
-                            <div>
+                            <div className='reveal-fade-up' data-delay="200">
                                 <h3 className='font-hanken text-3xl font-bold mb-4'>Challenges</h3>
                                 <ul className='flex flex-col gap-2'>
                                     {(Array.isArray(project.challenge) ? project.challenge : []).map((item, index) => (
@@ -161,7 +161,7 @@ function WorkDetail() {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col-span-12 lg:col-span-4'>
+                        <div className='col-span-12 lg:col-span-4 reveal-fade-up' data-delay="200">
                             <h3 className='font-hanken text-3xl font-bold mb-5'>Tools</h3>
                             <ul className="flex flex-wrap gap-2">
                                 {project.tools.map((tool) => (
@@ -177,7 +177,7 @@ function WorkDetail() {
                     </div>
                 </div>
             </div>
-            <div className='work__other mb-24'>
+            <div className='work__other mb-24 reveal-fade-up' data-delay="200">
                 <div className='container mx-auto flex items-center justify-between mb-6'>
                     <h3 className='font-hanken text-3xl font-bold'>Other Projects</h3>
                     {/* External navigation buttons */}
