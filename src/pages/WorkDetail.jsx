@@ -186,22 +186,22 @@ function WorkDetail() {
                             type='button'
                             onClick={() => swiperRef.current?.slidePrev()}
                             data-block='button'
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group text-[#333333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group hover:border-secondary-foreground transition-all duration-300'
                         >
                             <span className='button__flair'></span>
                             <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                                <path d='M13 7H1M1 7L7 1M1 7L7 13' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+                                <path className='stroke-[#181009] group-hover:stroke-white' d='M13 7H1M1 7L7 1M1 7L7 13' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
                             </svg>
                         </button>
                         <button
                             type='button'
                             onClick={() => swiperRef.current?.slideNext()}
                             data-block='button'
-                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group text-[#333333] hover:text-white hover:border-secondary-foreground transition-all duration-300'
+                            className='w-11 h-11 cursor-pointer rounded-full border border-[#333333] flex items-center justify-center button-effect button--stroke group hover:border-secondary-foreground transition-all duration-300'
                         >
                             <span className='button__flair'></span>
                             <svg className='size-3.5 relative z-10' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                                <path d='M1 7H13M13 7L7 1M13 7L7 13' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+                                <path className='stroke-[#181009] group-hover:stroke-white' d='M1 7H13M13 7L7 1M13 7L7 13' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
                             </svg>
                         </button>
                     </div>
