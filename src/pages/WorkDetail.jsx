@@ -52,10 +52,20 @@ function WorkDetail() {
     }, [project]);
 
     if (!project) {
-        return <div>Project not found</div>;
+        return (
+            <div className="container mx-auto py-73.5 text-center">
+                <h1 className="font-hanken text-5xl font-semibold mb-8">Project not found</h1>
+                <Link to="/work" className="btn-outline button-effect button--stroke inline-flex text-sm items-center gap-x-3 font-semibold uppercase px-6 pt-2.5 pb-2.5" data-block="button">
+                    <svg className="size-3 relative z-10" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 7H1M1 7L7 1M1 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span className='button__flair'></span>
+                    <span className="self-center relative z-10">Back to Work</span>
+                </Link>
+            </div>
+        );
     }
 
     const nextProjects = PortfolioData.filter((p) => p.slug !== slug);
+
 
     return (
         <div className='work-detail'>
