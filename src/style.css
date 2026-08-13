@@ -88,17 +88,9 @@
     }
 
 	.button-effect {
-		&:hover, &:active {
-			& svg path {
-				stroke: #ffffff !important;
-			}
-		}
 		@media(max-width: 768px) {
 			&:hover, &:active {
 				@apply bg-secondary-foreground text-white;
-				& svg path {
-					stroke: #ffffff !important;
-				}
 			}
 		}
 	}
