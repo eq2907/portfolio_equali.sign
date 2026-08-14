@@ -51,7 +51,7 @@ function AppContent() {
 		if (preloaderDone) {
 			setTimeout(() => {
 				initScrollAnimate();
-			}, 100);
+			}, 0.4);
 		}
 	}, [location, preloaderDone]);
 
