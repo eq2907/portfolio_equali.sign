@@ -1,6 +1,7 @@
 import './style.css';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Preloader from './components/Preloader';
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -12,6 +13,7 @@ import { initScrollAnimate } from './utils/scrollAnimate';
 import NotFound from './components/NotFound';
 
 function AppContent() {
+	const [preloaderDone, setPreloaderDone] = useState(false);
 	const location = useLocation();
 	const handleScroll = (id) => {
 		const blockAlignment = id === 'about' ? 'center' : 'start';
@@ -53,6 +55,7 @@ function AppContent() {
 
 	return (
 		<>
+			<Preloader onComplete={() => setPreloaderDone(true)} />
 			<Nav handleScroll={handleScroll} />
 			<Routes>
 				<Route path='/' element={<Home />} />
