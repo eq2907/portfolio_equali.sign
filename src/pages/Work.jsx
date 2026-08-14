@@ -103,7 +103,7 @@ function Work() {
                                     <figcaption className='flex-1 flex flex-col justify-between pt-6 px-8 pb-8'>
                                         <div>
                                             <h3 className='text-[#665B53] uppercase text-xs mb-1.5'>{item.subtitle}</h3>
-                                            <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2'>{item.title}</h2>
+                                            <h2 className='font-semibold uppercase text-xl lg:text-2xl mb-2 group-hover:text-primary transition-colors duration-300'><Link to={`/work/${item.slug}`}>{item.title}</Link></h2>
                                             <p className='font-hanken font-normal my-2 text-base leading-[1.8] line-clamp-3'>{item.description}</p>
                                             <ul className='flex flex-wrap gap-2 mt-4 mb-4'>
                                                 {(Array.isArray(item.label) ? item.label : []).map((label, i) => (
