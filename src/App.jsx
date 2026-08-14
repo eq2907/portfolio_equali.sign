@@ -48,10 +48,12 @@ function AppContent() {
 	useEffect(() => {
 		// Initialize button and scroll animations whenever the location changes
 		initButtonEffect();
-		setTimeout(() => {
-			initScrollAnimate();
-		}, 100);
-	}, [location]);
+		if (preloaderDone) {
+			setTimeout(() => {
+				initScrollAnimate();
+			}, 100);
+		}
+	}, [location, preloaderDone]);
 
 	return (
 		<>

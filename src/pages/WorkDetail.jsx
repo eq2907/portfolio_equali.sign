@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useRef, useEffect } from 'react';
 import { PortfolioData } from '../utils/PortfolioData';
 import gsap from 'gsap';
@@ -21,7 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function WorkDetail() {
     const { slug } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const project = PortfolioData.find((project) => project.slug === slug);
 
     // Refs for animations
