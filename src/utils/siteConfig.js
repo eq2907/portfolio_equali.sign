@@ -54,6 +54,8 @@ const siteConfig = {
 		{ platform: 'linkedin', href: 'https://www.linkedin.com/in/eki-susanto-a9914291' },
 		{ platform: 'github', href: 'https://github.com/eq2907' },
 		{ platform: 'instagram', href: 'https://www.instagram.com/eki.susanto/' },
+		{ platform: 'dribbble', href: 'https://dribbble.com/eki_susanto' },
+		{ platform: 'behance', href: 'https://www.behance.net/eq_susanto' },
 	],
 };
 
