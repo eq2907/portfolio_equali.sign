@@ -21,8 +21,6 @@
 
 	.glass {
 		@apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0px_4px_0px_0px_rgba(0,0,0,0.02)];
-		-webkit-backdrop-filter: blur(12px); /* Safari fix */
-		-moz-backdrop-filter: blur(12px); /* Firefox fix */
 	}
 
 	.btn-outline {
