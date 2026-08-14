@@ -21,6 +21,7 @@
 
 	.glass {
 		@apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0px_4px_0px_0px_rgba(0,0,0,0.02)];
+		-webkit-backdrop-filter: blur(12px); /* Safari fix */
 	}
 
 	.btn-outline {
@@ -112,7 +113,7 @@
 	}
 
 	.offcanvas {
-		@apply w-70 max-w-[90vw] fixed top-0 right-0 h-screen z-1050;
+		@apply w-70 max-w-[90vw] fixed top-0 -right-full h-screen z-1050;
 	}
 
 	.svg-wrap {
