@@ -10,6 +10,8 @@
 
 	--font-bodoni: "Bodoni Moda", serif;
 	--font-hanken: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+	--breakpoint-desktop-xl: 1800px;
 }
 
 @layer components {

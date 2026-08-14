@@ -47,7 +47,7 @@ function Preloader({ onComplete }) {
 			// Fade in counter
 			tl.to(counter, {
 				opacity: 1,
-				duration: 0.6,
+				duration: 0.4,
 				ease: 'power3.out',
 			});
 
@@ -71,7 +71,7 @@ function Preloader({ onComplete }) {
 				line,
 				{
 					scaleX: 1,
-					duration: 2.8,
+					duration: 2,
 					ease: 'power1.inOut',
 				},
 				'<'
@@ -93,7 +93,7 @@ function Preloader({ onComplete }) {
 				overlay,
 				{
 					yPercent: -100,
-					duration: 1,
+					duration: 0.6,
 					ease: 'power4.inOut',
 				},
 				'-=0.1'
@@ -160,7 +160,7 @@ function Preloader({ onComplete }) {
 					position: 'absolute',
 					bottom: 'clamp(2rem, 6vw, 4rem)',
 					left: '0%',
-					transform: 'translateX(-100%)',
+					transform: 'translateX(calc(-100% - 4rem))',
 					fontFamily: '"Hanken Grotesk", ui-sans-serif, sans-serif',
 					fontSize: 'clamp(5rem, 18vw, 14rem)',
 					fontWeight: 800,
