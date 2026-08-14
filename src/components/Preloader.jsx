@@ -41,18 +41,17 @@ function Preloader({ onComplete }) {
 
 			// Initial state
 			gsap.set(overlay, { yPercent: 0 });
-			gsap.set(counter, { opacity: 0, y: 24 });
+			gsap.set(counter, { opacity: 0, left: '0%' });
 			gsap.set(line, { scaleX: 0, transformOrigin: 'left center' });
 
 			// Fade in counter
 			tl.to(counter, {
 				opacity: 1,
-				y: 0,
 				duration: 0.6,
 				ease: 'power3.out',
 			});
 
-			// Count 0 → 100 while line grows
+			// Count 0 → 100 while line grows + counter tracks right edge
 			tl.to(
 				proxy,
 				{
@@ -60,7 +59,9 @@ function Preloader({ onComplete }) {
 					duration: 2.2,
 					ease: 'power1.inOut',
 					onUpdate: () => {
-						counter.textContent = Math.round(proxy.val);
+						const pct = Math.round(proxy.val);
+						counter.textContent = pct;
+						counter.style.left = proxy.val + '%';
 					},
 				},
 				'<0.1'
@@ -152,10 +153,14 @@ function Preloader({ onComplete }) {
 				/>
 			</div>
 
-			{/* Large numeric counter */}
+			{/* Large numeric counter — tracks right edge of progress line */}
 			<span
 				ref={counterRef}
 				style={{
+					position: 'absolute',
+					bottom: 'clamp(2rem, 6vw, 4rem)',
+					left: '0%',
+					transform: 'translateX(-100%)',
 					fontFamily: '"Hanken Grotesk", ui-sans-serif, sans-serif',
 					fontSize: 'clamp(5rem, 18vw, 14rem)',
 					fontWeight: 800,
@@ -164,7 +169,6 @@ function Preloader({ onComplete }) {
 					color: '#f5f0eb',
 					userSelect: 'none',
 					fontVariantNumeric: 'tabular-nums',
-					display: 'block',
 				}}
 			>
 				0
