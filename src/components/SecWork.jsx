@@ -26,7 +26,7 @@ function Portfolio({ title, subtitle, shortDescription, image, associatedImg, as
 					</div>
 				</div>
 				<div style={{ order: imageOrder }} className='w-full h-full min-h-87.5 md:min-h-full relative'>
-					<Link to={slug ? `/work/${slug}` : linkWork} rel='noopener noreferrer'>
+					<Link onClick={() => window.location.href = slug ? `/work/${slug}` : linkWork} rel='noopener noreferrer'>
 						{(associatedImg || associatedName) && (
 							<div className='absolute glass rounded-full object-contain inline-flex gap-2.5 pr-4.5 pl-1 py-1 top-8 left-4'>
 								{associatedImg && <img className='w-6 h-6 object-contain rounded-full' src={associatedImg} alt={title} loading='lazy' decoding='async' />}
